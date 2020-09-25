@@ -1,0 +1,1 @@
+This folder is used to store .tres or .res files. For example, these are used to store font settings.
