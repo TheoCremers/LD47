@@ -8,6 +8,7 @@
 "room",
 ]]
 script = ExtResource( 3 )
+max_time = 40
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
