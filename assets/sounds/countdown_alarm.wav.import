@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/countdown_alarm.wav-8f59b4ec372f02121eb39190272e878d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/countdown_alarm.wav"
+dest_files=[ "res://.import/countdown_alarm.wav-8f59b4ec372f02121eb39190272e878d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
