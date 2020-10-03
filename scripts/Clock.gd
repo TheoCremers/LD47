@@ -13,6 +13,10 @@ func _ready():
 	_startTime()
 	pass # Replace with function body.
 	
+func start(maxtime: int):
+	_setTime(maxtime)
+	_startTime()
+	
 func _physics_process(delta):
 	var pointLoc = str(timeRemaining).find('.')
 	var decimal = str(timeRemaining).substr(pointLoc+1,1)
