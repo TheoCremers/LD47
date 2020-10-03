@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/cybersnake.tpsheet-122e7912b8863fd7ba13ed11ed95d06c.res"
+
+[deps]
+
+files=[ "res://assets/enemies/cybersnake.sprites/attacking.tres", "res://assets/enemies/cybersnake.sprites/idle1.tres", "res://assets/enemies/cybersnake.sprites/idle2.tres", "res://assets/enemies/cybersnake.sprites/idle3.tres", "res://assets/enemies/cybersnake.sprites/swipe1.tres", "res://assets/enemies/cybersnake.sprites/swipe2.tres" ]
+
+source_file="res://assets/enemies/cybersnake.tpsheet"
+dest_files=[ "res://.import/cybersnake.tpsheet-122e7912b8863fd7ba13ed11ed95d06c.res", "res://assets/enemies/cybersnake.sprites/attacking.tres", "res://assets/enemies/cybersnake.sprites/idle1.tres", "res://assets/enemies/cybersnake.sprites/idle2.tres", "res://assets/enemies/cybersnake.sprites/idle3.tres", "res://assets/enemies/cybersnake.sprites/swipe1.tres", "res://assets/enemies/cybersnake.sprites/swipe2.tres" ]
+
+[params]
+

@@ -6,10 +6,11 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
 
-[node name="GatlingBird" type="KinematicBody2D"]
+[node name="GatlingBird" type="KinematicBody2D" groups=[
+"enemies",
+]]
 collision_layer = 4
 script = ExtResource( 2 )
-vx = 60.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )

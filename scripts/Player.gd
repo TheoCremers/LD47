@@ -1,16 +1,21 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-const MAX_SPEED_X = 30000 
+const MAX_SPEED_X = 28000
 const MAX_JUMP_HEIGHT = 80
-const AIR_CONTROL = 0.5
-const ACCELERATION = 48000
-const DECELERATION = 180000 
-const JUMP_FORCE_X = 12000 
-const JUMP_FORCE_Y = 32000 
+const AIR_CONTROL = 0.6
+const ACCELERATION = 54000
+const DECELERATION = 82000
+const DECELETATION_SLIDE = 10000
+const JUMP_FORCE_X = 10000 
+const JUMP_FORCE_Y = 24000 
 const DASH_FORCE_X = 77000 
 const DASH_FORCE_Y = 48000 
-const GRAVITY = 170000 
+const GRAVITY = 100000 
+
+const RUN = 1
+const DEATH = 2
+const JUMP = 3
 
 var input_direction = 0
 var facing_direction = 1
@@ -49,6 +54,7 @@ func _jump(delta):
 	jump_init_position = position.y
 	jump_trigger = false
 	jump_state = true
+	_play_sound(JUMP)
 	pass
 
 func _frame_input():
@@ -65,6 +71,8 @@ func _frame_input():
 		input_direction = -1
 	elif move_right:
 		input_direction = 1
+	if is_on_floor() && input_direction != 0:
+		_play_sound(RUN)
 
 func _movement_and_animation(delta):
 	if jump_trigger:
@@ -184,4 +192,14 @@ func _ground_mechanics(delta):
 			else:
 				$Animation.play("Idle")
 		pass
+	pass
+
+func _play_sound(index):
+	if(index == RUN):
+		if(!get_node("runSound").is_playing()):
+			get_node("runSound").play()
+	elif(index == DEATH):
+		get_node("deathSound").play()
+	elif(index == JUMP):
+		get_node("jumpSound").play()
 	pass
