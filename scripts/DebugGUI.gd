@@ -10,7 +10,7 @@ onready var misc2_info = $Arrangement/DebugInfo/Misc2
 onready var misc3_info = $Arrangement/DebugInfo/Misc3
 onready var misc4_info = $Arrangement/DebugInfo/Misc4
 onready var fps_info = $Arrangement/DebugInfo/FPSInfo
-onready var player = $"../../Player";
+onready var player = $"../../Room/Player";
 
 var mute = false;
 
@@ -33,7 +33,8 @@ func _input(event):
 		else:
 			visible = true
 	if event.is_action_pressed("debug_reset"):
-		_reset()
+		RoomChanger.change_scene(null)
+		#_reset()
 	if event.is_action_pressed("mute_audio"):
 		mute = !mute
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), mute)

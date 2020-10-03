@@ -89,12 +89,18 @@ animations = [ {
 "loop": true,
 "name": "Falling",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "Landing",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 5.30084, 18.7943 )
 
 [node name="Player" type="KinematicBody2D"]
+pause_mode = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
