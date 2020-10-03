@@ -1,8 +1,9 @@
 extends Label
 
-export (Color, RGB) var text_color
+const SOUNDSTARTS = 3
+var timeRemaining = 20
 
-var timeRemaining = 7
+export (Color, RGB) var text_color
 var timeStarted = false
 var previousNum = 999999
 
@@ -19,14 +20,17 @@ func _physics_process(delta):
 	text = ("%02d:%s" % [timeRemaining, decimal])
 	if timeStarted == true:
 		_subtractTime(delta)
-	if timeRemaining <= 3:
+		
+	if timeRemaining <= SOUNDSTARTS:
 		if currentNum < previousNum:
-			playSound()
+			playSoundClock()
 			pass
 		pass
+		
 	if timeRemaining < 0:
 		_stopTime()
 		_setTime(0.0)
+		playSoundZero()
 		pass
 	previousNum = currentNum;
 	pass
@@ -51,6 +55,10 @@ func _subtractTime(value):
 	timeRemaining -= value
 	pass
 	
-func playSound():
+func playSoundClock():
 	get_node("ClockSound").play()	
+	pass
+	
+func playSoundZero():
+	get_node("ClockZero").play()
 	pass
