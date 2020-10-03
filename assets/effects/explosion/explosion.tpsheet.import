@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/explosion.tpsheet-9b8eba23361d4d59c5f4058a9ff4c6bd.res"
+
+[deps]
+
+files=[ "res://assets/effects/explosion/explosion.sprites/fire_explosion_0004.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0006.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0003.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0005.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0002.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0007.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0008.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0010.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0009.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0000.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0001.tres" ]
+
+source_file="res://assets/effects/explosion/explosion.tpsheet"
+dest_files=[ "res://.import/explosion.tpsheet-9b8eba23361d4d59c5f4058a9ff4c6bd.res", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0004.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0006.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0003.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0005.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0002.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0007.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0008.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0010.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0009.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0000.tres", "res://assets/effects/explosion/explosion.sprites/fire_explosion_0001.tres" ]
+
+[params]
+
