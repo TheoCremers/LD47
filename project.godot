@@ -19,6 +19,10 @@ config/name="LD47"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/height=640
+
 [editor_plugins]
 
 enabled=PoolStringArray( "codeandweb.texturepacker" )
