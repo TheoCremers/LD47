@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/ExitPortal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/BlueTiles.tres" type="TileSet" id=2]
+
+[node name="Node" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+
+[node name="StartPoint" type="Position2D" parent="."]
+
+[node name="ExitPortal" parent="." instance=ExtResource( 1 )]
