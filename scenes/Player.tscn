@@ -54,12 +54,12 @@ region = Rect2( 322, 150, 46, 50 )
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 46, 50 )
+region = Rect2( 276, 0, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 276, 0, 46, 50 )
+region = Rect2( 0, 0, 46, 50 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -68,24 +68,24 @@ animations = [ {
 "name": "Landing",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Falling",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "Walking",
 "speed": 9.0
 }, {
 "frames": [ SubResource( 10 ) ],
+"loop": false,
+"name": "Jumping",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Falling",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ) ],
-"loop": false,
-"name": "Jumping",
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -94,6 +94,7 @@ extents = Vector2( 5.30084, 18.7943 )
 
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
+collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

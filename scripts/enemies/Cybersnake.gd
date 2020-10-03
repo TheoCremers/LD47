@@ -22,12 +22,12 @@ func _ready():
 	sprite.play()
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if not triggered:
 		facing_direction = -sign(player.global_position.x - global_position.x)
 		scale.x = facing_direction
 
-func _on_attack_area_entered(body):
+func _on_attack_area_entered(_body):
 	if not triggered:
 		triggered = true
 		# telegraph attack
@@ -35,7 +35,7 @@ func _on_attack_area_entered(body):
 		tween.interpolate_property(sprite, "modulate", Color.white, Color(1, 0, 0), attack_delay, Tween.TRANS_SINE, Tween.EASE_IN)
 		tween.start()
 
-func _on_attack_warning_completed(object, key):
+func _on_attack_warning_completed(_object, _key):
 	# TODO attack animation
 	swipe_sprite.visible = true
 	swipe_sprite.frame = 0

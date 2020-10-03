@@ -4,10 +4,9 @@ var explosion = preload("res://scenes/effects/Explosion.tscn")
 # Give this a velocity by setting the body.linear_velocity = Vector(x, y)
 
 func _ready():
-	linear_velocity = Vector2(400, -200)
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	 pass
 
 func on_trigger():
