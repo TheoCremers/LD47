@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/DebugGUI.gd" type="Script" id=1]
+
+[node name="DebugGUI" type="MarginContainer"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+script = ExtResource( 1 )
+
+[node name="Arrangement" type="VBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+
+[node name="DebugInfo" type="VBoxContainer" parent="Arrangement"]
+margin_right = 1004.0
+margin_bottom = 562.0
+size_flags_vertical = 3
+
+[node name="PlayerXInfo" type="Label" parent="Arrangement/DebugInfo"]
+margin_right = 1004.0
+margin_bottom = 14.0
+text = "Player X"
+
+[node name="PlayerYInfo" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 18.0
+margin_right = 1004.0
+margin_bottom = 32.0
+text = "Player Y"
+
+[node name="VelocityXInfo" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 36.0
+margin_right = 1004.0
+margin_bottom = 50.0
+text = "Velocity X"
+
+[node name="VelocityYInfo" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 54.0
+margin_right = 1004.0
+margin_bottom = 68.0
+text = "Velocity Y"
+
+[node name="SpeedXInfo" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 72.0
+margin_right = 1004.0
+margin_bottom = 86.0
+text = "Speed X"
+
+[node name="Misc" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 90.0
+margin_right = 1004.0
+margin_bottom = 104.0
+text = "Misc"
+
+[node name="Misc2" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 108.0
+margin_right = 1004.0
+margin_bottom = 122.0
+text = "Misc"
+
+[node name="Misc3" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 126.0
+margin_right = 1004.0
+margin_bottom = 140.0
+text = "Misc"
+
+[node name="Misc4" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 144.0
+margin_right = 1004.0
+margin_bottom = 158.0
+text = "Misc"
+
+[node name="FPSInfo" type="Label" parent="Arrangement/DebugInfo"]
+margin_top = 162.0
+margin_right = 1004.0
+margin_bottom = 176.0
+text = "FPS"
+
+[node name="DemoTextBox" type="VBoxContainer" parent="Arrangement"]
+margin_top = 566.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="DemoInfo" type="HBoxContainer" parent="Arrangement/DemoTextBox"]
+margin_right = 1004.0
+margin_bottom = 14.0
+
+[node name="InfoTag1" type="Label" parent="Arrangement/DemoTextBox/DemoInfo"]
+margin_right = 197.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Dash: Shift"
+
+[node name="InfoTag3" type="Label" parent="Arrangement/DemoTextBox/DemoInfo"]
+margin_left = 201.0
+margin_right = 399.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Reset: R"
+
+[node name="InfoTag4" type="Label" parent="Arrangement/DemoTextBox/DemoInfo"]
+margin_left = 403.0
+margin_right = 600.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Toggle debug info: P"
+
+[node name="InfoTag5" type="Label" parent="Arrangement/DemoTextBox/DemoInfo"]
+margin_left = 604.0
+margin_right = 802.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Mute audio: M"
+
+[node name="InfoTag7" type="Label" parent="Arrangement/DemoTextBox/DemoInfo"]
+margin_left = 806.0
+margin_right = 1004.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Quit: ESC"
