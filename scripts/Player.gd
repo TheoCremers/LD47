@@ -1,16 +1,21 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-const MAX_SPEED_X = 30000 
+const MAX_SPEED_X = 28000
 const MAX_JUMP_HEIGHT = 80
-const AIR_CONTROL = 0.5
-const ACCELERATION = 48000
-const DECELERATION = 180000 
-const JUMP_FORCE_X = 12000 
-const JUMP_FORCE_Y = 32000 
+const AIR_CONTROL = 0.6
+const ACCELERATION = 54000
+const DECELERATION = 82000
+const DECELETATION_SLIDE = 10000
+const JUMP_FORCE_X = 10000 
+const JUMP_FORCE_Y = 24000 
 const DASH_FORCE_X = 77000 
 const DASH_FORCE_Y = 48000 
-const GRAVITY = 170000 
+const GRAVITY = 100000 
+
+const RUN = 1
+const DEATH = 2
+const JUMP = 3
 
 var input_direction = 0
 var facing_direction = 1
@@ -19,6 +24,7 @@ var velocity = Vector2()
 var dash_trigger = false
 var jump_trigger = false
 var jump_state = false
+var slide_state = false
 var jump_init_position = 0
 var on_floor = false
 
@@ -49,6 +55,7 @@ func _jump(delta):
 	jump_init_position = position.y
 	jump_trigger = false
 	jump_state = true
+	_play_sound(JUMP)
 	pass
 
 func _frame_input():
@@ -57,7 +64,7 @@ func _frame_input():
 	
 	var move_left = Input.is_action_pressed("move_left")
 	var move_right = Input.is_action_pressed("move_right")
-
+	slide_state = Input.is_action_pressed("move_down")
 	# TODO: Implement up direction for translocator aiming
 	if move_left == move_right:
 		input_direction = 0
@@ -65,6 +72,10 @@ func _frame_input():
 		input_direction = -1
 	elif move_right:
 		input_direction = 1
+	if !slide_state:
+		if is_on_floor() && input_direction != 0:
+			_play_sound(RUN)
+		
 
 func _movement_and_animation(delta):
 	if jump_trigger:
@@ -87,11 +98,10 @@ func _dash_input(event):
 		dash_trigger = true
 	pass
 
-
 func _dash_trigger(_delta):
 	dash_trigger = false
 	if (not $DashCooldown.time_left):
-		if input_direction or facing_direction:
+		if input_direction != 0 or facing_direction:
 			_dash()
 		pass
 	pass
@@ -162,26 +172,41 @@ func _air_mechanics(delta):
 	else:
 		jump_state = false
 
+func _accelerate(delta):
+	if (facing_direction == -input_direction):
+		speed_x /= 3
+	facing_direction = input_direction
+	speed_x += ACCELERATION * delta
+
+func _deccelerate(delta, factor = 1):
+	speed_x -= DECELERATION * delta * factor
+	
 func _ground_mechanics(delta):
 	# When hitting an obstacle, causing the velocity to cease, re-adjust the speed
 	if (is_on_wall()):
 		speed_x = 0
 
 	if input_direction:
-		if (facing_direction == -input_direction):
-			speed_x /= 3
-		facing_direction = input_direction
-		speed_x += ACCELERATION * delta
-		
+		_accelerate(delta)
 		# Change animation speed based on movement speed
 		$Animation.frames.set_animation_speed("Walking", 7 + (9 * (speed_x / MAX_SPEED_X)))
 		$Animation.play("Walking")
 	else:
-		speed_x -= DECELERATION * delta
+		_deccelerate(delta)
 		if (velocity.x == 0):
 			if ($Animation.animation == "Falling" or $Animation.animation == "Landing"):
 				$Animation.play("Landing")
 			else:
 				$Animation.play("Idle")
 		pass
+	pass
+	
+func _play_sound(index):
+	if(index == RUN):
+		if(!get_node("runSound").is_playing()):
+			get_node("runSound").play()
+	elif(index == DEATH):
+		get_node("deathSound").play()
+	elif(index == JUMP):
+		get_node("jumpSound").play()
 	pass
