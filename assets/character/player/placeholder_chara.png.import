@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/twilight-tiles.png-2a0babe43e6e3e6ed862046f289af1b7.stex"
+path="res://.import/placeholder_chara.png-d5bb021d26fafd7907c7d3048a32bff2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/twilight-tiles.png"
-dest_files=[ "res://.import/twilight-tiles.png-2a0babe43e6e3e6ed862046f289af1b7.stex" ]
+source_file="res://assets/character/player/placeholder_chara.png"
+dest_files=[ "res://.import/placeholder_chara.png-d5bb021d26fafd7907c7d3048a32bff2.stex" ]
 
 [params]
 
