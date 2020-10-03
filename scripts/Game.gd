@@ -31,7 +31,6 @@ func load_room(name: String):
 	
 func increment_timescore(current_room):
 	timescore += current_room.get_node("Clock/Clock").timeRemaining
-	print(timescore)
 	general_gui.set_timescore(int(round(timescore)))
 	pass
 
