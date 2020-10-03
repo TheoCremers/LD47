@@ -11,16 +11,19 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Arrangement" type="VBoxContainer" parent="."]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1014.0
-margin_bottom = 590.0
+margin_bottom = 630.0
 
 [node name="DebugInfo" type="VBoxContainer" parent="Arrangement"]
 margin_right = 1004.0
-margin_bottom = 562.0
+margin_bottom = 602.0
 size_flags_vertical = 3
 
 [node name="PlayerXInfo" type="Label" parent="Arrangement/DebugInfo"]
@@ -83,9 +86,9 @@ margin_bottom = 176.0
 text = "FPS"
 
 [node name="DemoTextBox" type="VBoxContainer" parent="Arrangement"]
-margin_top = 566.0
+margin_top = 606.0
 margin_right = 1004.0
-margin_bottom = 580.0
+margin_bottom = 620.0
 
 [node name="DemoInfo" type="HBoxContainer" parent="Arrangement/DemoTextBox"]
 margin_right = 1004.0

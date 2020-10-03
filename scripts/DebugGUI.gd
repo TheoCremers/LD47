@@ -10,7 +10,6 @@ onready var misc2_info = $Arrangement/DebugInfo/Misc2
 onready var misc3_info = $Arrangement/DebugInfo/Misc3
 onready var misc4_info = $Arrangement/DebugInfo/Misc4
 onready var fps_info = $Arrangement/DebugInfo/FPSInfo
-onready var player = $"../../Room/Player";
 
 var mute = false;
 
@@ -18,13 +17,16 @@ func _ready():
 	pass
 
 func _process(_delta):
-	pos_x_info.text = str("Player X: ", player.position.x)
-	pos_y_info.text = str("Player Y: ", player.position.y)
-	velocity_x_info.text = str("Velocity X: ", player.velocity.x)
-	velocity_y_info.text = str("Velocity Y: ", player.velocity.y)
-	speed_x_info.text = str("Speed X: ", player.speed_x)
-	fps_info.text = str("FPS: ", Performance.get_monitor(Performance.TIME_FPS))
-	misc_info.text = str("input dir: ", player.input_direction)
+	var player = $"../../Room/Player";
+	
+	if (player != null):
+		pos_x_info.text = str("Player X: ", player.position.x)
+		pos_y_info.text = str("Player Y: ", player.position.y)
+		velocity_x_info.text = str("Velocity X: ", player.velocity.x)
+		velocity_y_info.text = str("Velocity Y: ", player.velocity.y)
+		speed_x_info.text = str("Speed X: ", player.speed_x)
+		fps_info.text = str("FPS: ", Performance.get_monitor(Performance.TIME_FPS))
+		misc_info.text = str("input dir: ", player.input_direction)
 
 func _input(event):
 	if event.is_action_pressed("debug_toggle"):
@@ -33,8 +35,7 @@ func _input(event):
 		else:
 			visible = true
 	if event.is_action_pressed("debug_reset"):
-		RoomChanger.change_scene(null)
-		#_reset()
+		_reset()
 	if event.is_action_pressed("mute_audio"):
 		mute = !mute
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), mute)
