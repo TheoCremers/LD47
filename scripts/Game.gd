@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	add_to_group("game")
-	load_room("Room1")
+	load_room("RoomT1")
 	pass
 	
 func load_room(name: String):
