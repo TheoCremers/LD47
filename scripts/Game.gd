@@ -10,7 +10,7 @@ func load_room(name: String):
 	if (current_room != null):
 		self.remove_child(current_room)
 		current_room.queue_free()
-	var new_room = load("res://scenes/" + name + ".tscn").instance()
+	var new_room = load("res://scenes/rooms/" + name + ".tscn").instance()
 	self.add_child(new_room)
 	return true
 
