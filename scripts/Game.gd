@@ -1,11 +1,27 @@
 extends Node2D
 
+onready var debug_gui_scene = preload("res://scenes/gui/DebugGUI.tscn")
+onready var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
+var general_gui
+var debug_gui
+
+var timescore = 0
+
 func _ready():
 	add_to_group("game")
+	
+	# Init things
+	general_gui = general_gui_scene.instance()
+	debug_gui = debug_gui_scene.instance()
+	$Overhead.add_child(debug_gui)
+	$Overhead.add_child(general_gui)
+	
 	load_room("Room1")
 	pass
 	
 func load_room(name: String):
+	timescore += 1
+	general_gui.set_timescore(timescore)
 	var current_room = get_current_room()
 	if (current_room != null):
 		self.remove_child(current_room)

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/gui/GeneralGUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/gui/icons/beating_heart_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/gui/icons/beating_heart_2.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 957.0
+margin_top = 16.0
+margin_right = 273.0
+margin_bottom = 12.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 8.61526
+margin_top = -5.24408
+margin_right = 48.6153
+margin_bottom = 8.75592
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
