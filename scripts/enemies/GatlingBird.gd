@@ -8,11 +8,14 @@ var time = 0
 var facing_direction = 1
 var motion = Vector2()
 
-onready var player = $"/root/Game/Player"
+var player
 onready var sprite = $Sprite
 #onready var tween = $Tween
 #onready var timer = $Timer
 #onready var area = $Area2D
+
+func start(_player):
+	player = _player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
