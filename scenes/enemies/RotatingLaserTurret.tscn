@@ -7,7 +7,7 @@
 [ext_resource path="res://scripts/enemies/RotatingLaserTurret.gd" type="Script" id=5]
 
 [node name="RotatingLaserTurret" type="Node2D"]
-position = Vector2( 155.031, 99.8147 )
+position = Vector2( -1.41626, -0.556198 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true

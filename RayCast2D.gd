@@ -19,7 +19,7 @@ func _physics_process(delta):
 		
 	$Line2D.points[1] = cast_point
 
-func set_is_casting(cast : bool) -> void:
+func set_is_casting(cast : bool):
 	is_casting = cast
 	
 	if is_casting:
