@@ -35,6 +35,7 @@ func _physics_process(delta):
 		_stopTime()
 		_setTime(0.0)
 		playSoundZero()
+		get_tree().call_group("game", "time_up")
 		pass
 	previousNum = currentNum;
 	pass

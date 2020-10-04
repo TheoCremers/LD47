@@ -26,7 +26,7 @@ func start(_player):
 func _ready():
 	sprite.animation = "idle"
 	sprite.play()
-	$Hitbox.connect("body_entered", self, "_on_player_contact")
+	assert($Hitbox.connect("body_entered", self, "_on_player_contact") == OK)
 	pass
 
 func _process(_delta):
