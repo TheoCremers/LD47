@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/gatlingbat.tpsheet-16805e92cb56cb34798d0c69238cbfbd.res"
+
+[deps]
+
+files=[ "res://assets/enemies/gatlingbat.sprites/flap3.tres", "res://assets/enemies/gatlingbat.sprites/flap1.tres", "res://assets/enemies/gatlingbat.sprites/flap2.tres", "res://assets/enemies/gatlingbat.sprites/bullet1.tres", "res://assets/enemies/gatlingbat.sprites/bullet2.tres", "res://assets/enemies/gatlingbat.sprites/bullet3.tres", "res://assets/enemies/gatlingbat.sprites/bullet4.tres" ]
+
+source_file="res://assets/enemies/gatlingbat.tpsheet"
+dest_files=[ "res://.import/gatlingbat.tpsheet-16805e92cb56cb34798d0c69238cbfbd.res", "res://assets/enemies/gatlingbat.sprites/flap3.tres", "res://assets/enemies/gatlingbat.sprites/flap1.tres", "res://assets/enemies/gatlingbat.sprites/flap2.tres", "res://assets/enemies/gatlingbat.sprites/bullet1.tres", "res://assets/enemies/gatlingbat.sprites/bullet2.tres", "res://assets/enemies/gatlingbat.sprites/bullet3.tres", "res://assets/enemies/gatlingbat.sprites/bullet4.tres" ]
+
+[params]
+

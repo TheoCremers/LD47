@@ -34,11 +34,14 @@ var active_bomb = false
 var bomb_instance
 var stunned = false
 var stun_remaining = 0
+var dying = false
 
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
+onready var timeloss = preload("res://scenes/effects/TimeLoss.tscn")
 onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
+	$Animation.animation = "Falling"
 	# Ensure the first frame is displayed correctly
 	velocity = -UP*10
 	velocity = move_and_slide(velocity, UP)
@@ -280,9 +283,25 @@ func _bomb_action():
 			get_parent().add_child(bomb_instance)
 	pass
 
-func knockback(new_velocity, stun_time):
+func knockback(new_velocity, stun_time, time_loss = 3):
 	velocity = new_velocity
 	facing_direction = -sign(new_velocity.x)
+	# stop dash
+	$DashActive.stop()
+	dash_trigger = false
+	# visual effect
+	$Tween.stop_all()
+	$Tween.interpolate_property($Animation, "modulate", Color.red, \
+	Color.white, 0.6, Tween.TRANS_SINE, Tween.EASE_OUT)
+	$Tween.start()
+	# Timeloss
+	if !stunned:
+		get_tree().call_group("clock", "time_penalty", time_loss)
+		var new_loss = timeloss.instance()
+		new_loss.amount = time_loss
+		new_loss.rect_position = position
+		get_parent().add_child(new_loss)
+	# get stunned
 	stunned = true
 	stun_remaining = stun_time
 	pass
@@ -292,6 +311,18 @@ func _play_animation(name):
 	(name == "Dashing"):
 		$Animation.play(name)
 	pass
+	
+func _on_death():
+	if (!dying):
+		dying = true
+		_play_sound(DEATH)
+		stunned = true
+		stun_remaining = 100
+		$Tween.stop_all()
+		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.6, Tween.TRANS_SINE)
+		$Tween.start()
+		yield($Tween, "tween_completed")
+		get_tree().call_group("game", "reset_room")
 
 func _play_sound(index):
 	if(index == RUN):
