@@ -9,52 +9,52 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 322, 0, 46, 50 )
+region = Rect2( 0, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 150, 46, 50 )
+region = Rect2( 46, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 46, 150, 46, 50 )
+region = Rect2( 92, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 92, 150, 46, 50 )
+region = Rect2( 138, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 138, 150, 46, 50 )
+region = Rect2( 184, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 184, 150, 46, 50 )
+region = Rect2( 230, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 230, 150, 46, 50 )
+region = Rect2( 276, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 276, 150, 46, 50 )
+region = Rect2( 322, 150, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 322, 150, 46, 50 )
+region = Rect2( 0, 0, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 46, 50 )
+region = Rect2( 322, 0, 46, 50 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
@@ -63,24 +63,24 @@ region = Rect2( 276, 0, 46, 50 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Landing",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Falling",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "Walking",
 "speed": 9.0
 }, {
-"frames": [ SubResource( 10 ) ],
+"frames": [ SubResource( 9 ) ],
 "loop": true,
 "name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "Landing",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "Falling",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ) ],
@@ -94,6 +94,7 @@ extents = Vector2( 5.30084, 18.7943 )
 
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
+collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

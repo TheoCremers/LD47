@@ -13,6 +13,10 @@ const DASH_FORCE_X = 77000
 const DASH_FORCE_Y = 48000 
 const GRAVITY = 100000 
 
+const BOMB_UP = Vector2(0, -400)
+const BOMB_DIAG = Vector2(400, -400)
+const BOMB_HORI = Vector2(400, -100)
+
 const RUN = 1
 const DEATH = 2
 const JUMP = 3
@@ -26,6 +30,13 @@ var jump_trigger = false
 var jump_state = false
 var jump_init_position = 0
 var on_floor = false
+var has_bomb = true
+var active_bomb = false
+var bomb_instance
+var stunned = false
+var stun_remaining = 0
+
+onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
 
 func _ready():
 	# Ensure the first frame is displayed correctly
@@ -34,6 +45,8 @@ func _ready():
 	pass
 
 func _input(event):
+	if stunned:
+		return
 	if event.is_action_released("jump"):
 		jump_state = false
 	if event.is_action_pressed("jump"):
@@ -41,12 +54,20 @@ func _input(event):
 			jump_trigger = true
 		pass
 	_dash_input(event)
+	if event.is_action_pressed("throw_bomb"):
+		_bomb_action()
 	pass
 
 func _physics_process(delta):
 	on_floor = is_on_floor()
 	_frame_input()
 	_movement_and_animation(delta)
+	
+	if stunned:
+		stun_remaining -= delta
+		if stun_remaining <= 0:
+			stunned = false
+			speed_x = abs(velocity.x)
 	pass
 
 func _jump(delta):
@@ -61,9 +82,13 @@ func _frame_input():
 	if not is_processing_input():
 		return
 	
+	if stunned:
+		input_direction = 0
+		return
+	
 	var move_left = Input.is_action_pressed("move_left")
 	var move_right = Input.is_action_pressed("move_right")
-
+	
 	# TODO: Implement up direction for translocator aiming
 	if move_left == move_right:
 		input_direction = 0
@@ -119,6 +144,7 @@ func _dash_mechanics(delta):
 	_apply_gravity(delta)
 	speed_x = clamp(speed_x, 0, DASH_FORCE_X)
 	velocity.x = speed_x * facing_direction * delta
+	jump_state = false
 	if (on_floor):
 		velocity = move_and_slide(Vector2(velocity.x, velocity.y), UP)
 	else:
@@ -141,12 +167,25 @@ func _movement_mechanics(delta):
 	pass
 	_apply_gravity(delta)
 	
-	speed_x = clamp(speed_x, 0, MAX_SPEED_X)
-	velocity.x = speed_x * facing_direction * delta
+	if stunned:
+		velocity.x = velocity.x * 0.9
+	else:
+		speed_x = clamp(speed_x, 0, MAX_SPEED_X)
+		velocity.x = speed_x * facing_direction * delta
 	velocity = move_and_slide(velocity, UP)	
 	pass
 
 func _air_mechanics(delta):
+	# Gravity
+	if not is_on_ceiling() and jump_state and ((jump_init_position - MAX_JUMP_HEIGHT) < position.y):
+		velocity.y = -(JUMP_FORCE_Y * delta)
+	else:
+		jump_state = false
+	
+	if stunned:
+		$Animation.play("Falling")
+		return
+	
 	if (velocity.y < 0):
 		$Animation.play("Jumping")
 	else:
@@ -164,11 +203,6 @@ func _air_mechanics(delta):
 	else:
 		speed_x -= DECELERATION * AIR_CONTROL * delta
 	
-	# Gravity
-	if not is_on_ceiling() and jump_state and ((jump_init_position - MAX_JUMP_HEIGHT) < position.y):
-		velocity.y = -(JUMP_FORCE_Y * delta)
-	else:
-		jump_state = false
 
 func _ground_mechanics(delta):
 	# When hitting an obstacle, causing the velocity to cease, re-adjust the speed
@@ -192,6 +226,44 @@ func _ground_mechanics(delta):
 			else:
 				$Animation.play("Idle")
 		pass
+	pass
+
+func _bomb_action():
+	if active_bomb:
+		position = bomb_instance.position
+		bomb_instance.on_trigger()
+		active_bomb = false
+	else:
+		if has_bomb:
+			has_bomb = false
+			active_bomb = true
+			var bomb_velocity = Vector2.ZERO
+			
+			if Input.is_action_pressed("move_up"):
+				if input_direction == 0:
+					bomb_velocity = BOMB_UP
+				else:
+					bomb_velocity = BOMB_DIAG
+					bomb_velocity.x *= input_direction
+			else:
+				if input_direction == 0:
+					bomb_velocity = BOMB_DIAG
+					bomb_velocity.x *= facing_direction
+				else:
+					bomb_velocity = BOMB_HORI
+					bomb_velocity.x *= input_direction
+			
+			bomb_instance = bomb.instance()
+			bomb_instance.position = position
+			bomb_instance.linear_velocity = bomb_velocity
+			get_parent().add_child(bomb_instance)
+	pass
+
+func knockback(new_velocity, stun_time):
+	velocity = new_velocity
+	facing_direction = -sign(new_velocity.x)
+	stunned = true
+	stun_remaining = stun_time
 	pass
 
 func _play_sound(index):
