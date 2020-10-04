@@ -25,6 +25,8 @@ animations = [ {
 radius = 100.821
 
 [node name="Explosion" type="Area2D"]
+collision_layer = 0
+collision_mask = 2147483652
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
