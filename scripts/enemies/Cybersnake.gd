@@ -25,7 +25,7 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if not triggered:
+	if not triggered and player != null:
 		facing_direction = -sign(player.global_position.x - global_position.x)
 		scale.x = facing_direction
 
