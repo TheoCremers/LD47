@@ -9,7 +9,6 @@
 "room",
 ]]
 script = ExtResource( 3 )
-max_time = 7
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -38,4 +37,4 @@ NextRoomName = "Room_up1"
 TimescoreRequirement = 20
 
 [node name="Cybersnake" parent="." instance=ExtResource( 4 )]
-position = Vector2( 322.763, 428.461 )
+position = Vector2( 688.35, 367.78 )

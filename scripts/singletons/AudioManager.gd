@@ -3,10 +3,13 @@ extends Control
 var _current_bgm 
 
 func _ready():
+#	for audio in $SFX.get_children():
+#		audio.volume_db -= -20
 	pass
 
-func play_sfx(name):
-	$"SFX".get_node(name).play()
+func play_sfx(name, overlap = true):
+	if !overlap or !$"SFX".get_node(name).is_playing():
+		$"SFX".get_node(name).play()
 	pass
 
 func play_bgm(name):

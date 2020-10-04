@@ -291,12 +291,11 @@ func _play_animation(name):
 
 func _play_sound(index):
 	if(index == RUN):
-		if(!get_node("runSound").is_playing()):
-			get_node("runSound").play()
+		AudioManager.play_sfx("PlayerStep", false)
 	elif(index == DEATH):
-		get_node("deathSound").play()
+		AudioManager.play_sfx("PlayerDeath")
 	elif(index == JUMP):
-		get_node("jumpSound").play()
+		AudioManager.play_sfx("PlayerJump")
 	pass
 
 func _animation_finished():

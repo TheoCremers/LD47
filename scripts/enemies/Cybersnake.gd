@@ -58,7 +58,7 @@ func _on_attack_warning_completed(_object, _key):
 	
 	if(attack_area.overlaps_body(player)):
 		var knockback_velocity = attack_knockback
-		knockback_velocity.x *= facing_direction
+		knockback_velocity.x *= -facing_direction
 		player.knockback(knockback_velocity, attack_stun_time)
 	# turn back color and start cd
 	sprite.modulate = Color.white
@@ -78,7 +78,7 @@ func _on_AnimatedAttack_finished():
 func _on_player_contact(_body):
 	if _body == player and not dying:
 		var knockback_velocity = contact_knockback
-		knockback_velocity.x *= facing_direction
+		knockback_velocity.x *= -facing_direction
 		player.knockback(knockback_velocity, contact_stun_time)
 	pass
 
