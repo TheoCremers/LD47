@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/BlueTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/ExitPortal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Room.gd" type="Script" id=3]
+[ext_resource path="res://scenes/enemies/Cybersnake.tscn" type="PackedScene" id=4]
 
 [node name="Room" type="Node" groups=[
 "room",
@@ -30,3 +31,6 @@ position = Vector2( 112.797, 557.57 )
 [node name="ExitPortal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 920.862, 551.085 )
 NextRoomName = "Room2"
+
+[node name="Cybersnake" parent="." instance=ExtResource( 4 )]
+position = Vector2( 631.444, 366.725 )

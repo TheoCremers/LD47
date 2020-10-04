@@ -13,6 +13,6 @@ func on_trigger():
 	#explosion
 	var new_explosion = explosion.instance()
 	new_explosion.position = global_position
-	
-	#delete object
+	get_parent().add_child(new_explosion)
+	queue_free()
 	pass
