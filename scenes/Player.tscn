@@ -63,6 +63,11 @@ animations = [ {
 "loop": false,
 "name": "Jumping",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -117,3 +122,5 @@ limit_top = 0
 drag_margin_left = 0.13
 drag_margin_right = 0.13
 drag_margin_bottom = 0.17
+
+[node name="Tween" type="Tween" parent="."]
