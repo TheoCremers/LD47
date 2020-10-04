@@ -10,6 +10,7 @@
 ]]
 script = ExtResource( 3 )
 max_time = 0
+bonus_room_id = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -31,7 +32,7 @@ tile_data = PoolIntArray( 0, 20, 0, 1, 20, 0, 2, 20, 0, 3, 20, 0, 4, 20, 0, 5, 2
 position = Vector2( 58.6204, 261.489 )
 
 [node name="ExitPortal" parent="." instance=ExtResource( 2 )]
-position = Vector2( 439.572, 246.184 )
+position = Vector2( 443.318, 255.923 )
 NextRoomName = "Room1"
 
 [node name="Powerup" parent="." instance=ExtResource( 4 )]

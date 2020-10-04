@@ -2,6 +2,7 @@ extends Node
 
 export (int) var max_time = 30
 export (Vector2) var dimensions = Vector2(512, 320)
+export (int) var bonus_room_id = 0
 onready var clock_scene = preload("res://scenes/Clock.tscn")
 
 func _ready():

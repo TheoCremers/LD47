@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/gui/PowerPopup.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/intro.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/gui/overhead/Frame_powerup.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="TextureRect" parent="."]
+margin_left = 280.0
+margin_top = 88.0
+margin_right = 531.0
+margin_bottom = 247.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 232.0
+margin_bottom = 136.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You have gained the 
+knowledge of 
+ - DASH STRIKE -
+Press Shift to perform"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

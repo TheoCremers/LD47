@@ -16,15 +16,15 @@ func _ready():
 	
 	# Init things
 	general_gui = general_gui_scene.instance()
-	#debug_gui = debug_gui_scene.instance()
-	#$Overhead.add_child(debug_gui)
+	debug_gui = debug_gui_scene.instance()
+	$Overhead.add_child(debug_gui)
 	$Overhead.add_child(general_gui)
 	AudioManager.play_bgm("FirstLoop")
 	
 	load_room(StartRoom)
 	
 	# Give player Translocator power
-	Progression.transloc_level = 1
+	Progression.transloc_level = 3
 	Progression.dash_unlocked = true
 	pass
 	
@@ -33,6 +33,10 @@ func load_room(name: String):
 	if current_room != null:
 		if current_room.max_time > 0:
 			increment_timescore(current_room)
+			if Progression.timescore > 300:
+				AudioManager.play_bgm("SecondLoop")
+		if current_room.bonus_room_id != 0:
+			Progression.clear_bonus_room(current_room.bonus_room_id)
 		self.remove_child(current_room)
 		current_room.queue_free()
 	current_room_scene = load("res://scenes/rooms/" + name + ".tscn")
@@ -60,14 +64,13 @@ func get_current_room():
 	return null
 	
 func room_transition(name: String, entrance: Vector2):
-	print("ok")
 	# Animation fadeout
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.25), "timeout")
-	$Overhead/RoomTransition.position = entrance
-	$Overhead/RoomTransition.visible = true
+	$RoomTransition.position = entrance
+	$RoomTransition.visible = true
 	
-	$Tween.interpolate_property($Overhead/RoomTransition, "scale", \
+	$Tween.interpolate_property($RoomTransition, "scale", \
 	Vector2.ZERO, Vector2(5,5), 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$Tween.start()
 	yield($Tween, "tween_completed")
@@ -77,14 +80,15 @@ func room_transition(name: String, entrance: Vector2):
 	
 	# Animation fadein
 	yield(get_tree().create_timer(0.25), "timeout")
-	$Overhead/RoomTransition.position = get_viewport_rect().size / 2
-
-	$Tween.interpolate_property($Overhead/RoomTransition, "scale", \
-	$Overhead/RoomTransition.scale, Vector2.ZERO, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	
+	var vtrans = get_canvas_transform()
+	var top_left = -vtrans.get_origin() / vtrans.get_scale()
+	var vsize = get_viewport_rect().size
+	$RoomTransition.position = top_left + 0.5*vsize/vtrans.get_scale()
+	$Tween.interpolate_property($RoomTransition, "scale", \
+	$RoomTransition.scale, Vector2.ZERO, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)	
 	$Tween.start()
 	yield($Tween, "tween_completed")
-	$Overhead/RoomTransition.visible = false
+	$RoomTransition.visible = false
 	get_tree().paused = false
 
 func time_up():
@@ -109,6 +113,9 @@ func time_up():
 	pass
 
 func get_powerup(name: String):
+	var popup_scene = load("res://scenes/gui/PowerPopup.tscn")
+	var popup = popup_scene.instance()
+	$Overhead.add_child(popup)
 	match name:
 		"dash":
 			Progression.dash_unlocked = true

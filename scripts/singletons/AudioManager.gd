@@ -13,6 +13,8 @@ func play_sfx(name, overlap = true):
 	pass
 
 func play_bgm(name):
+	if name == _current_bgm:
+		return
 	if (_current_bgm != null):
 		fadeout_bgm()
 	_current_bgm = name

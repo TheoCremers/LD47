@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/enemies/laser turret.png" type="Texture" id=1]
 [ext_resource path="res://RayCast2D.gd" type="Script" id=2]
 
+
 [node name="LaserTurret" type="Node2D"]
 __meta__ = {
 "_edit_group_": true
