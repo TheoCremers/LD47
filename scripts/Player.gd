@@ -42,7 +42,7 @@ onready var timeloss = preload("res://scenes/effects/TimeLoss.tscn")
 onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
-	$Animation.animation = "Falling"
+	$Animation.animation = "Idle"
 	# Ensure the first frame is displayed correctly
 	velocity = -UP*10
 	velocity = move_and_slide(velocity, UP)
