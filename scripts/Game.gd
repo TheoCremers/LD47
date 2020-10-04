@@ -16,8 +16,8 @@ func _ready():
 	
 	# Init things
 	general_gui = general_gui_scene.instance()
-	#debug_gui = debug_gui_scene.instance()
-	#$Overhead.add_child(debug_gui)
+	debug_gui = debug_gui_scene.instance()
+	$Overhead.add_child(debug_gui)
 	$Overhead.add_child(general_gui)
 	AudioManager.play_bgm("FirstLoop")
 	
@@ -33,6 +33,8 @@ func load_room(name: String):
 	if current_room != null:
 		if current_room.max_time > 0:
 			increment_timescore(current_room)
+		if current_room.bonus_room_id != 0:
+			Progression.clear_bonus_room(current_room.bonus_room_id)
 		self.remove_child(current_room)
 		current_room.queue_free()
 	current_room_scene = load("res://scenes/rooms/" + name + ".tscn")
@@ -60,7 +62,6 @@ func get_current_room():
 	return null
 	
 func room_transition(name: String, entrance: Vector2):
-	print("ok")
 	# Animation fadeout
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.25), "timeout")
@@ -78,10 +79,8 @@ func room_transition(name: String, entrance: Vector2):
 	# Animation fadein
 	yield(get_tree().create_timer(0.25), "timeout")
 	$Overhead/RoomTransition.position = get_viewport_rect().size / 2
-
 	$Tween.interpolate_property($Overhead/RoomTransition, "scale", \
-	$Overhead/RoomTransition.scale, Vector2.ZERO, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	
+	$Overhead/RoomTransition.scale, Vector2.ZERO, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)	
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	$Overhead/RoomTransition.visible = false
