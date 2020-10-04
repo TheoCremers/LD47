@@ -285,6 +285,7 @@ func knockback(new_velocity, stun_time):
 	facing_direction = -sign(new_velocity.x)
 	stunned = true
 	stun_remaining = stun_time
+	dash_trigger = false
 	pass
 
 func _play_animation(name):

@@ -1,0 +1,123 @@
+{
+	"textures": [
+		{
+			"image": "gatlingbat.png",
+			"size": {
+				"w": 64,
+				"h": 105
+			},
+			"sprites": [
+				{
+					"filename": "flap3.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 45
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 19
+					}
+				},
+				{
+					"filename": "flap1.png",
+					"region": {
+						"x": 0,
+						"y": 45,
+						"w": 64,
+						"h": 29
+					},
+					"margin": {
+						"x": 0,
+						"y": 16,
+						"w": 0,
+						"h": 35
+					}
+				},
+				{
+					"filename": "flap2.png",
+					"region": {
+						"x": 0,
+						"y": 74,
+						"w": 56,
+						"h": 25
+					},
+					"margin": {
+						"x": 4,
+						"y": 21,
+						"w": 8,
+						"h": 39
+					}
+				},
+				{
+					"filename": "bullet1.png",
+					"region": {
+						"x": 0,
+						"y": 99,
+						"w": 16,
+						"h": 6
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "bullet2.png",
+					"region": {
+						"x": 16,
+						"y": 99,
+						"w": 16,
+						"h": 6
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "bullet3.png",
+					"region": {
+						"x": 32,
+						"y": 99,
+						"w": 16,
+						"h": 6
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "bullet4.png",
+					"region": {
+						"x": 48,
+						"y": 99,
+						"w": 16,
+						"h": 6
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:1ebe404e4e1c740f3eba6e35350d430e:c6a1e7f982a96e6f12f68c7e6835d548:89e4f53fb3781adf26684a40048150e6$"
+	}
+}
