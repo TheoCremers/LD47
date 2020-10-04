@@ -45,7 +45,7 @@ func _ready():
 	velocity = move_and_slide(velocity, UP)
 	# disable dashattack hitbox
 	dash_hitbox.set_disabled(true)
-	$DashActive.connect("timeout", self, "_on_dash_finished")
+	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
 	pass
 
 func _input(event):
@@ -127,7 +127,7 @@ func _dash_input(event):
 
 func _dash_trigger(_delta):
 	dash_trigger = false
-	if (not $DashCooldown.time_left):
+	if not $DashCooldown.time_left and Progression.dash_unlocked:
 		if input_direction or facing_direction:
 			_dash()
 		pass
@@ -239,6 +239,8 @@ func _ground_mechanics(delta):
 	pass
 
 func _bomb_action():
+	if Progression.transloc_level == 0:
+		return
 	if active_bomb:
 		position = bomb_instance.position
 		bomb_instance.on_trigger()
