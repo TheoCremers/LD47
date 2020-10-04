@@ -37,14 +37,14 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "Jumping",
+"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Walking",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "Falling",
+"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Throwing",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ) ],
@@ -52,20 +52,20 @@ animations = [ {
 "name": "Landing",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "Walking",
+"name": "Falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
 "speed": 20.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "Dashing",
 "speed": 20.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": false,
-"name": "Throwing",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -121,3 +121,12 @@ script = ExtResource( 6 )
 position = Vector2( 14, 2 )
 rotation = 1.5708
 shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+drag_margin_left = 0.13
+drag_margin_right = 0.13
+drag_margin_bottom = 0.17
