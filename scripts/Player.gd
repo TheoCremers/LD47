@@ -34,6 +34,7 @@ var active_bomb = false
 var bomb_instance
 var stunned = false
 var stun_remaining = 0
+var dying = false
 
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
 onready var dash_hitbox = $DashAttackArea/CollisionShape2D
@@ -292,6 +293,18 @@ func _play_animation(name):
 	(name == "Dashing"):
 		$Animation.play(name)
 	pass
+	
+func _on_death():
+	if (!dying):
+		dying = true
+		_play_sound(DEATH)
+		stunned = true
+		stun_remaining = 100
+		$Tween.stop_all()
+		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.6, Tween.TRANS_SINE)
+		$Tween.start()
+		yield($Tween, "tween_completed")
+		get_tree().call_group("game", "reset_room")
 
 func _play_sound(index):
 	if(index == RUN):
