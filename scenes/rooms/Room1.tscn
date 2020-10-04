@@ -38,4 +38,4 @@ NextRoomName = "Room_up1"
 TimescoreRequirement = 20
 
 [node name="Cybersnake" parent="." instance=ExtResource( 4 )]
-position = Vector2( 631.444, 366.725 )
+position = Vector2( 322.763, 428.461 )
