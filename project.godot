@@ -20,6 +20,11 @@ config/description="LD47 submission"
 run/main_scene="res://scenes/story/Intro.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+AudioManager="*res://scenes/singletons/AudioManager.tscn"
+Progression="*res://scripts/singletons/Progression.gd"
+
 [display]
 
 window/size/height=640

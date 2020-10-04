@@ -1,96 +1,79 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/character/player/placeholder_chara.png" type="Texture" id=2]
+[ext_resource path="res://assets/character/player/player.sprites/Jump/jump2.tres" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/run.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sounds/death.wav" type="AudioStream" id=5]
+[ext_resource path="res://scripts/DashAttackArea.gd" type="Script" id=6]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run7.tres" type="Texture" id=7]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run9.tres" type="Texture" id=8]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run10.tres" type="Texture" id=9]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run8.tres" type="Texture" id=10]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run6.tres" type="Texture" id=11]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run5.tres" type="Texture" id=12]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run2.tres" type="Texture" id=13]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run4.tres" type="Texture" id=14]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run1.tres" type="Texture" id=15]
+[ext_resource path="res://assets/character/player/player.sprites/Run/run3.tres" type="Texture" id=16]
+[ext_resource path="res://assets/character/player/player.sprites/Jump/stand.tres" type="Texture" id=17]
+[ext_resource path="res://assets/character/player/player.sprites/Jump/jump3.tres" type="Texture" id=18]
+[ext_resource path="res://assets/character/player/player.sprites/Jump/fall.tres" type="Texture" id=19]
+[ext_resource path="res://assets/character/player/player.sprites/Jump/jump1.tres" type="Texture" id=20]
+[ext_resource path="res://assets/character/player/player.sprites/Throw/throw1.tres" type="Texture" id=21]
+[ext_resource path="res://assets/character/player/player.sprites/Dash/dash5.tres" type="Texture" id=22]
+[ext_resource path="res://assets/character/player/player.sprites/Dash/dash6.tres" type="Texture" id=23]
+[ext_resource path="res://assets/character/player/player.sprites/Dash/dash2.tres" type="Texture" id=24]
+[ext_resource path="res://assets/character/player/player.sprites/Dash/dash3.tres" type="Texture" id=25]
+[ext_resource path="res://assets/character/player/player.sprites/Dash/dash4.tres" type="Texture" id=26]
+[ext_resource path="res://assets/character/player/player.sprites/Throw/throw3.tres" type="Texture" id=27]
+[ext_resource path="res://assets/character/player/player.sprites/Throw/throw4.tres" type="Texture" id=28]
+[ext_resource path="res://assets/character/player/player.sprites/Throw/throw2.tres" type="Texture" id=29]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 46, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 92, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 138, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 184, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 230, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 276, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 322, 150, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 322, 0, 46, 50 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 276, 0, 46, 50 )
-
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Walking",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 9 ) ],
+"frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ) ],
-"loop": true,
-"name": "Landing",
-"speed": 5.0
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
+"speed": 20.0
 }, {
-"frames": [ SubResource( 10 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "Falling",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ) ],
 "loop": false,
-"name": "Jumping",
+"name": "Landing",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Walking",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "Dashing",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Throwing",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 5.30084, 18.7943 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 24 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 20.0
+height = 50.0
 
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
@@ -101,25 +84,40 @@ __meta__ = {
 }
 
 [node name="Animation" type="AnimatedSprite" parent="."]
-frames = SubResource( 12 )
-animation = "Landing"
+frames = SubResource( 1 )
+animation = "Falling"
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 13 )
+position = Vector2( 0, 6 )
+shape = SubResource( 2 )
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
 
 [node name="DashActive" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.3
 one_shot = true
 
 [node name="runSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -20.0
 
 [node name="jumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -20.0
 
 [node name="deathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -20.0
+
+[node name="DashAttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackArea"]
+position = Vector2( 14, 2 )
+rotation = 1.5708
+shape = SubResource( 3 )

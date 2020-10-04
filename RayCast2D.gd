@@ -10,12 +10,15 @@ func _ready():
 	set_physics_process(false)
 	$Line2D.points[1] = Vector2.ZERO
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var cast_point := cast_to
 	force_raycast_update()
 	
 	if is_colliding():
 		cast_point = to_local(get_collision_point())
+		var collide = get_collider()
+		print(collide)
+		
 		
 	$Line2D.points[1] = cast_point
 
