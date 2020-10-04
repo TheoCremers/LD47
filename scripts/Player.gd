@@ -35,19 +35,21 @@ var bomb_instance
 var stunned = false
 var stun_remaining = 0
 var dying = false
+var has_moved = false
 
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
 onready var timeloss = preload("res://scenes/effects/TimeLoss.tscn")
 onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
-	$Animation.animation = "Falling"
+	$Animation.animation = "Idle"
 	# Ensure the first frame is displayed correctly
 	velocity = -UP*10
 	velocity = move_and_slide(velocity, UP)
 	# disable dashattack hitbox
 	dash_hitbox.set_disabled(true)
 	assert($Animation.connect("animation_finished",self,"_animation_finished") == OK)
+	assert($BombCooldown.connect("timeout",self,"_on_bombcooldown_finished") == OK)
 	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
 	pass
 
@@ -56,14 +58,10 @@ func init_camera(bounding_box: Vector2):
 	$Camera2D.limit_bottom = bounding_box.y
 
 func _input(event):
+	has_moved = true
 	if stunned:
 		return
-	if event.is_action_released("jump"):
-		jump_state = false
-	if event.is_action_pressed("jump"):
-		if on_floor:
-			jump_trigger = true
-		pass
+	
 	_dash_input(event)
 	if event.is_action_pressed("throw_bomb"):
 		_bomb_action()
@@ -85,11 +83,23 @@ func _jump(delta):
 	velocity.y = -(JUMP_FORCE_Y * delta)
 	jump_init_position = position.y
 	jump_trigger = false
-	jump_state = true
+	jump_state = Input.is_action_pressed("jump")
 	_play_sound(JUMP)
 	pass
 
 func _frame_input():
+	if Input.is_action_just_released("jump"):
+		jump_state = false
+	if Input.is_action_just_pressed("jump"):
+		if on_floor:
+			jump_trigger = true
+		else:
+			$JumpBuffer.start()
+		pass
+	elif !$JumpBuffer.is_stopped() and on_floor:
+		jump_trigger = true
+		$JumpBuffer.stop()
+		
 	if not is_processing_input():
 		return
 	
@@ -206,7 +216,7 @@ func _air_mechanics(delta):
 	
 	if (velocity.y < 0):
 		_play_animation("Jumping")
-	else:
+	elif has_moved:
 		_play_animation("Falling")
 	
 	# Airturn
@@ -254,6 +264,7 @@ func _bomb_action():
 		position = bomb_instance.position
 		bomb_instance.on_trigger()
 		active_bomb = false
+		$BombCooldown.start(get_bomb_cooldown())
 	else:
 		if has_bomb:
 			# Throw bomb
@@ -282,6 +293,19 @@ func _bomb_action():
 			bomb_instance.linear_velocity = bomb_velocity
 			get_parent().add_child(bomb_instance)
 	pass
+
+
+func get_bomb_cooldown():
+	match Progression.transloc_level:
+		2: 
+			return 10
+		3:
+			return 5
+		_:
+			return 99
+
+func _on_bombcooldown_finished():
+	has_bomb = true
 
 func knockback(new_velocity, stun_time, time_loss = 3):
 	velocity = new_velocity

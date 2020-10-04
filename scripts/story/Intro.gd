@@ -9,7 +9,8 @@ func _ready():
 		return
 	print_text($IntroText/Label.text)
 	$BGM.play(7)
-	$Tween.interpolate_property($BGM, "volume_db", -80, -12, 4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
+	$Tween.interpolate_property($BGM, "volume_db", -80, -12, 4, \
+	Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
 	$Tween.start()
 	$IntroText/Label.text = ""
 	
@@ -32,8 +33,10 @@ func show_title():
 func _input(_event):
 	if ($TitleScreen/PressStart.visible and !intro_finished):
 		intro_finished = true
-		$Tween.interpolate_property($BGM, "volume_db", -12, -80, 2, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
-		$Tween.interpolate_property($FadeToBlack, "modulate:a", 0, 1, 2, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
+		$Tween.interpolate_property($BGM, "volume_db", -12, -80, 2, \
+		Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
+		$Tween.interpolate_property($FadeToBlack, "modulate:a", 0, 1, 2, \
+		Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
 		$Tween.start()
 		yield($Tween, "tween_completed")
 		assert(get_tree().change_scene("res://Game.tscn") == OK)
