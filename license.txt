@@ -3,4 +3,17 @@ Designer: enigmansmp1824
 Foundry: http://fontstruct.com 
 License: CC-BY-SA
 
-Intro BGM: http://teknoaxe.com/Link_Code_3.php?q=1555
+Intro.ogg: http://teknoaxe.com/Link_Code_3.php?q=1555
+Title: Driving to the Future
+Artist: TeknoAXE
+License: CC-BY-4.0
+
+First_loop.ogg: http://teknoaxe.com/Link_Code_3.php?q=1379
+Title: Ascent to the Station
+Artist: TeknoAXE
+License: CC-BY-4.0
+
+Second_loop.ogg: http://teknoaxe.com/Link_Code_3.php?q=1416
+Title: Race Between the Spires
+Artist: TehknoAXE
+License: CC-BY-4.0

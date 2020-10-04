@@ -9,8 +9,7 @@ const DECELERATION = 82000
 const DECELETATION_SLIDE = 10000
 const JUMP_FORCE_X = 10000 
 const JUMP_FORCE_Y = 24000 
-const DASH_FORCE_X = 77000 
-const DASH_FORCE_Y = 48000 
+const DASH_FORCE_X = 30000
 const GRAVITY = 100000 
 
 const BOMB_UP = Vector2(0, -400)
@@ -37,12 +36,21 @@ var stunned = false
 var stun_remaining = 0
 
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
+onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
 	# Ensure the first frame is displayed correctly
 	velocity = -UP*10
 	velocity = move_and_slide(velocity, UP)
+	# disable dashattack hitbox
+	dash_hitbox.set_disabled(true)
+	assert($Animation.connect("animation_finished",self,"_animation_finished") == OK)
+	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
 	pass
+
+func init_camera(bounding_box: Vector2):
+	$Camera2D.limit_right = bounding_box.x
+	$Camera2D.limit_bottom = bounding_box.y
 
 func _input(event):
 	if stunned:
@@ -123,7 +131,7 @@ func _dash_input(event):
 
 func _dash_trigger(_delta):
 	dash_trigger = false
-	if (not $DashCooldown.time_left):
+	if not $DashCooldown.time_left and Progression.dash_unlocked:
 		if input_direction or facing_direction:
 			_dash()
 		pass
@@ -136,7 +144,11 @@ func _dash():
 	speed_x = DASH_FORCE_X
 	$DashCooldown.start()
 	$DashActive.start()
+	# Dash attack
+	$DashAttackArea.scale.x = facing_direction
+	dash_hitbox.set_disabled(false)
 	# TODO: Dash trail/animation
+	_play_animation("Dashing")
 	pass
 
 
@@ -151,6 +163,9 @@ func _dash_mechanics(delta):
 		# While gravity is still applied, it is ignored during an airdash 
 		velocity = move_and_slide(Vector2(velocity.x, 0), UP)
 	pass
+
+func _on_dash_finished():
+	dash_hitbox.set_disabled(true)
 
 func _apply_gravity(delta):
 	velocity.y += GRAVITY * delta * delta
@@ -183,13 +198,13 @@ func _air_mechanics(delta):
 		jump_state = false
 	
 	if stunned:
-		$Animation.play("Falling")
+		_play_animation("Falling")
 		return
 	
 	if (velocity.y < 0):
-		$Animation.play("Jumping")
+		_play_animation("Jumping")
 	else:
-		$Animation.play("Falling")
+		_play_animation("Falling")
 	
 	# Airturn
 	if (facing_direction == -input_direction):
@@ -217,24 +232,30 @@ func _ground_mechanics(delta):
 		
 		# Change animation speed based on movement speed
 		$Animation.frames.set_animation_speed("Walking", 7 + (9 * (speed_x / MAX_SPEED_X)))
-		$Animation.play("Walking")
+		_play_animation("Walking")
 	else:
 		speed_x -= DECELERATION * delta
+		if (velocity.y == 0):
+			if ($Animation.animation == "Falling"):
+				_play_animation("Landing")
 		if (velocity.x == 0):
-			if ($Animation.animation == "Falling" or $Animation.animation == "Landing"):
-				$Animation.play("Landing")
-			else:
-				$Animation.play("Idle")
+			if ($Animation.animation != "Falling"):
+				_play_animation("Idle")
 		pass
 	pass
 
 func _bomb_action():
+	if Progression.transloc_level == 0:
+		return
 	if active_bomb:
 		position = bomb_instance.position
 		bomb_instance.on_trigger()
 		active_bomb = false
 	else:
 		if has_bomb:
+			# Throw bomb
+			_play_animation("Throwing")
+			
 			has_bomb = false
 			active_bomb = true
 			var bomb_velocity = Vector2.ZERO
@@ -266,12 +287,20 @@ func knockback(new_velocity, stun_time):
 	stun_remaining = stun_time
 	pass
 
+func _play_animation(name):
+	if !($Animation.animation == "Throwing" and $Animation.is_playing()) or \
+	(name == "Dashing"):
+		$Animation.play(name)
+	pass
+
 func _play_sound(index):
 	if(index == RUN):
-		if(!get_node("runSound").is_playing()):
-			get_node("runSound").play()
+		AudioManager.play_sfx("PlayerStep", false)
 	elif(index == DEATH):
-		get_node("deathSound").play()
+		AudioManager.play_sfx("PlayerDeath")
 	elif(index == JUMP):
-		get_node("jumpSound").play()
+		AudioManager.play_sfx("PlayerJump")
 	pass
+
+func _animation_finished():
+	$Animation.stop()

@@ -27,14 +27,15 @@ func _physics_process(delta):
 		
 	if timeRemaining <= SOUNDSTARTS:
 		if currentNum < previousNum:
-			playSoundClock()
+			AudioManager.play_sfx("TimerCountdown")
 			pass
 		pass
 		
 	if timeRemaining < 0:
 		_stopTime()
 		_setTime(0.0)
-		playSoundZero()
+		AudioManager.play_sfx("TimerZero")
+		get_tree().call_group("game", "time_up")
 		pass
 	previousNum = currentNum;
 	pass
@@ -58,11 +59,4 @@ func _addTime(value):
 func _subtractTime(value):
 	timeRemaining -= value
 	pass
-	
-func playSoundClock():
-	get_node("ClockSound").play()	
-	pass
-	
-func playSoundZero():
-	get_node("ClockZero").play()
-	pass
+
