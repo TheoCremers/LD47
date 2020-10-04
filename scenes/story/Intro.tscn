@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/intro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/story/Intro.gd" type="Script" id=2]
+[ext_resource path="res://assets/bgm/intro.ogg" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+extra_spacing_top = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 106
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.00784314, 0.0392157, 0.12549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntroText" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="IntroText"]
+margin_top = 155.0
+margin_right = 724.0
+margin_bottom = 284.0
+custom_fonts/font = SubResource( 1 )
+text = "The year is 2188. 
+You have been sentenced to 500 years in Virtual.
+Will you suffer this endlessly repeating scenario,
+or will you be able to escape from your . . ."
+
+[node name="TitleScreen" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 930.0
+margin_bottom = 543.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="RichTextLabel" parent="TitleScreen"]
+margin_right = 830.0
+margin_bottom = 219.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[wave]TIME PRISON[/wave]"
+text = "TIME PRISON"
+
+[node name="PressStart" type="Label" parent="TitleScreen"]
+visible = false
+margin_top = 223.0
+margin_right = 830.0
+margin_bottom = 443.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "Press any key to start"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -80.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="FadeToBlack" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.00784314, 0.0392157, 0.12549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
