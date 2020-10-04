@@ -16,7 +16,6 @@ func play_bgm(name):
 	if (_current_bgm != null):
 		fadeout_bgm()
 	_current_bgm = name
-	print("hallo")
 	$"BGM".get_node(name).play()
 	pass
 	
