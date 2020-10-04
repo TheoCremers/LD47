@@ -3,7 +3,9 @@
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/gui/effects/transition_circle.png" type="Texture" id=2]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=[
+"game",
+]]
 pause_mode = 2
 script = ExtResource( 1 )
 
