@@ -45,7 +45,7 @@ func _ready():
 	velocity = move_and_slide(velocity, UP)
 	# disable dashattack hitbox
 	dash_hitbox.set_disabled(true)
-	$DashActive.connect("timeout", self, "_on_dash_finished")
+	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
 	pass
 
 func _input(event):
