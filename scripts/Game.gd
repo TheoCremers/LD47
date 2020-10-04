@@ -45,6 +45,7 @@ func room_transition(name: String, entrance: Vector2):
 	yield(get_tree().create_timer(0.25), "timeout")
 	$Overhead/RoomTransition.position = entrance
 	$Overhead/RoomTransition.visible = true
+	
 	$Tween.interpolate_property($Overhead/RoomTransition, "scale", \
 	Vector2.ZERO, Vector2(5,5), 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$Tween.start()
@@ -56,8 +57,10 @@ func room_transition(name: String, entrance: Vector2):
 	# Animation fadein
 	yield(get_tree().create_timer(0.25), "timeout")
 	$Overhead/RoomTransition.position = get_viewport_rect().size / 2
+
 	$Tween.interpolate_property($Overhead/RoomTransition, "scale", \
 	$Overhead/RoomTransition.scale, Vector2.ZERO, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	$Overhead/RoomTransition.visible = false

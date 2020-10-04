@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Time Prison"
 config/description="LD47 submission"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://scenes/story/Intro.tscn"
 config/icon="res://icon.png"
 
 [display]
