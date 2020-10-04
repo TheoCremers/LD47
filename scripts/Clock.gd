@@ -31,14 +31,22 @@ func _physics_process(delta):
 			pass
 		pass
 		
-	if timeRemaining < 0:
+	_check_time_remaining()
+	previousNum = currentNum;
+	pass
+
+func time_penalty(amount):
+	_subtractTime(amount)
+	AudioManager.play_sfx("TimerCountdown")
+	_check_time_remaining()
+	pass
+
+func _check_time_remaining():
+	if timeRemaining <= 0:
 		_stopTime()
 		_setTime(0.0)
 		AudioManager.play_sfx("TimerZero")
 		get_tree().call_group("game", "time_up")
-		pass
-	previousNum = currentNum;
-	pass
 
 func _startTime():
 	timeStarted = true
@@ -53,10 +61,10 @@ func _setTime(value):
 	pass
 	
 func _addTime(value):
-	timeRemaining += value
+	timeRemaining = clamp(timeRemaining + value, 0, 99)
 	pass
 	
 func _subtractTime(value):
-	timeRemaining -= value
+	timeRemaining = clamp(timeRemaining - value, 0, 99)
 	pass
 
