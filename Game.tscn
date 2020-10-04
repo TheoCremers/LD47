@@ -8,14 +8,9 @@
 ]]
 pause_mode = 2
 script = ExtResource( 1 )
+StartRoom = "Room_up1"
 
 [node name="Overhead" type="CanvasLayer" parent="."]
-
-[node name="RoomTransition" type="Sprite" parent="Overhead"]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
-z_index = 999
-texture = ExtResource( 2 )
 
 [node name="FadeToBlack" type="ColorRect" parent="Overhead"]
 modulate = Color( 1, 1, 1, 0 )
@@ -27,3 +22,9 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="RoomTransition" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+z_index = 999
+texture = ExtResource( 2 )
