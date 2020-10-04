@@ -1,0 +1,393 @@
+{
+	"textures": [
+		{
+			"image": "player.png",
+			"size": {
+				"w": 122,
+				"h": 435
+			},
+			"sprites": [
+				{
+					"filename": "Dash/dash5.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 85,
+						"h": 45
+					},
+					"margin": {
+						"x": 29,
+						"y": 19,
+						"w": 29,
+						"h": 19
+					}
+				},
+				{
+					"filename": "Dash/dash6.png",
+					"region": {
+						"x": 0,
+						"y": 45,
+						"w": 78,
+						"h": 45
+					},
+					"margin": {
+						"x": 22,
+						"y": 19,
+						"w": 22,
+						"h": 19
+					}
+				},
+				{
+					"filename": "Dash/dash4.png",
+					"region": {
+						"x": 0,
+						"y": 90,
+						"w": 77,
+						"h": 45
+					},
+					"margin": {
+						"x": 21,
+						"y": 19,
+						"w": 21,
+						"h": 19
+					}
+				},
+				{
+					"filename": "Throw/throw3.png",
+					"region": {
+						"x": 0,
+						"y": 135,
+						"w": 59,
+						"h": 47
+					},
+					"margin": {
+						"x": 0,
+						"y": 17,
+						"w": 0,
+						"h": 17
+					}
+				},
+				{
+					"filename": "Run/run1.png",
+					"region": {
+						"x": 78,
+						"y": 45,
+						"w": 44,
+						"h": 50
+					},
+					"margin": {
+						"x": 0,
+						"y": 14,
+						"w": 4,
+						"h": 14
+					}
+				},
+				{
+					"filename": "Run/run7.png",
+					"region": {
+						"x": 77,
+						"y": 95,
+						"w": 45,
+						"h": 51
+					},
+					"margin": {
+						"x": 0,
+						"y": 13,
+						"w": 3,
+						"h": 13
+					}
+				},
+				{
+					"filename": "Dash/dash2.png",
+					"region": {
+						"x": 59,
+						"y": 146,
+						"w": 63,
+						"h": 41
+					},
+					"margin": {
+						"x": 0,
+						"y": 23,
+						"w": 27,
+						"h": 23
+					}
+				},
+				{
+					"filename": "Throw/throw4.png",
+					"region": {
+						"x": 0,
+						"y": 182,
+						"w": 55,
+						"h": 47
+					},
+					"margin": {
+						"x": 0,
+						"y": 17,
+						"w": 0,
+						"h": 17
+					}
+				},
+				{
+					"filename": "Dash/dash3.png",
+					"region": {
+						"x": 55,
+						"y": 187,
+						"w": 63,
+						"h": 41
+					},
+					"margin": {
+						"x": 0,
+						"y": 23,
+						"w": 27,
+						"h": 23
+					}
+				},
+				{
+					"filename": "Run/run6.png",
+					"region": {
+						"x": 0,
+						"y": 229,
+						"w": 48,
+						"h": 49
+					},
+					"margin": {
+						"x": 0,
+						"y": 15,
+						"w": 6,
+						"h": 15
+					}
+				},
+				{
+					"filename": "Jump/fall.png",
+					"region": {
+						"x": 0,
+						"y": 278,
+						"w": 35,
+						"h": 56
+					},
+					"margin": {
+						"x": 0,
+						"y": 8,
+						"w": 0,
+						"h": 8
+					}
+				},
+				{
+					"filename": "Run/run5.png",
+					"region": {
+						"x": 0,
+						"y": 334,
+						"w": 36,
+						"h": 51
+					},
+					"margin": {
+						"x": 0,
+						"y": 13,
+						"w": 8,
+						"h": 13
+					}
+				},
+				{
+					"filename": "Run/run10.png",
+					"region": {
+						"x": 0,
+						"y": 385,
+						"w": 38,
+						"h": 50
+					},
+					"margin": {
+						"x": 0,
+						"y": 14,
+						"w": 4,
+						"h": 14
+					}
+				},
+				{
+					"filename": "Jump/jump2.png",
+					"region": {
+						"x": 85,
+						"y": 0,
+						"w": 27,
+						"h": 43
+					},
+					"margin": {
+						"x": 0,
+						"y": 21,
+						"w": 0,
+						"h": 21
+					}
+				},
+				{
+					"filename": "Jump/jump3.png",
+					"region": {
+						"x": 35,
+						"y": 278,
+						"w": 29,
+						"h": 56
+					},
+					"margin": {
+						"x": 0,
+						"y": 8,
+						"w": 0,
+						"h": 8
+					}
+				},
+				{
+					"filename": "Run/run4.png",
+					"region": {
+						"x": 36,
+						"y": 334,
+						"w": 28,
+						"h": 50
+					},
+					"margin": {
+						"x": 0,
+						"y": 14,
+						"w": 6,
+						"h": 14
+					}
+				},
+				{
+					"filename": "Run/run8.png",
+					"region": {
+						"x": 38,
+						"y": 384,
+						"w": 31,
+						"h": 50
+					},
+					"margin": {
+						"x": 0,
+						"y": 14,
+						"w": 1,
+						"h": 14
+					}
+				},
+				{
+					"filename": "Run/run2.png",
+					"region": {
+						"x": 48,
+						"y": 229,
+						"w": 34,
+						"h": 49
+					},
+					"margin": {
+						"x": 0,
+						"y": 15,
+						"w": 2,
+						"h": 15
+					}
+				},
+				{
+					"filename": "Throw/throw2.png",
+					"region": {
+						"x": 82,
+						"y": 228,
+						"w": 34,
+						"h": 50
+					},
+					"margin": {
+						"x": 0,
+						"y": 14,
+						"w": 4,
+						"h": 14
+					}
+				},
+				{
+					"filename": "Throw/throw1.png",
+					"region": {
+						"x": 64,
+						"y": 278,
+						"w": 30,
+						"h": 54
+					},
+					"margin": {
+						"x": 0,
+						"y": 10,
+						"w": 2,
+						"h": 10
+					}
+				},
+				{
+					"filename": "Run/run3.png",
+					"region": {
+						"x": 64,
+						"y": 332,
+						"w": 25,
+						"h": 52
+					},
+					"margin": {
+						"x": 3,
+						"y": 12,
+						"w": 3,
+						"h": 12
+					}
+				},
+				{
+					"filename": "Jump/stand.png",
+					"region": {
+						"x": 94,
+						"y": 278,
+						"w": 24,
+						"h": 55
+					},
+					"margin": {
+						"x": 0,
+						"y": 9,
+						"w": 0,
+						"h": 9
+					}
+				},
+				{
+					"filename": "Jump/jump1.png",
+					"region": {
+						"x": 89,
+						"y": 333,
+						"w": 26,
+						"h": 46
+					},
+					"margin": {
+						"x": 0,
+						"y": 18,
+						"w": 0,
+						"h": 18
+					}
+				},
+				{
+					"filename": "Dash/dash1.png",
+					"region": {
+						"x": 69,
+						"y": 384,
+						"w": 26,
+						"h": 43
+					},
+					"margin": {
+						"x": 0,
+						"y": 21,
+						"w": 0,
+						"h": 21
+					}
+				},
+				{
+					"filename": "Run/run9.png",
+					"region": {
+						"x": 95,
+						"y": 379,
+						"w": 20,
+						"h": 52
+					},
+					"margin": {
+						"x": 0,
+						"y": 12,
+						"w": 0,
+						"h": 12
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c227fccb992e6e2280ac355272409568:e05812de0555f6fb922f3a78d105546a:0f3c3fc01f5f43cf60290b5024bbe8b7$"
+	}
+}

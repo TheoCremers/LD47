@@ -9,8 +9,7 @@ const DECELERATION = 82000
 const DECELETATION_SLIDE = 10000
 const JUMP_FORCE_X = 10000 
 const JUMP_FORCE_Y = 24000 
-const DASH_FORCE_X = 77000 
-const DASH_FORCE_Y = 48000 
+const DASH_FORCE_X = 30000
 const GRAVITY = 100000 
 
 const BOMB_UP = Vector2(0, -400)
@@ -45,6 +44,7 @@ func _ready():
 	velocity = move_and_slide(velocity, UP)
 	# disable dashattack hitbox
 	dash_hitbox.set_disabled(true)
+	assert($Animation.connect("animation_finished",self,"_animation_finished") == OK)
 	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
 	pass
 
@@ -144,6 +144,7 @@ func _dash():
 	$DashAttackArea.scale.x = facing_direction
 	dash_hitbox.set_disabled(false)
 	# TODO: Dash trail/animation
+	_play_animation("Dashing")
 	pass
 
 
@@ -193,13 +194,13 @@ func _air_mechanics(delta):
 		jump_state = false
 	
 	if stunned:
-		$Animation.play("Falling")
+		_play_animation("Falling")
 		return
 	
 	if (velocity.y < 0):
-		$Animation.play("Jumping")
+		_play_animation("Jumping")
 	else:
-		$Animation.play("Falling")
+		_play_animation("Falling")
 	
 	# Airturn
 	if (facing_direction == -input_direction):
@@ -227,14 +228,15 @@ func _ground_mechanics(delta):
 		
 		# Change animation speed based on movement speed
 		$Animation.frames.set_animation_speed("Walking", 7 + (9 * (speed_x / MAX_SPEED_X)))
-		$Animation.play("Walking")
+		_play_animation("Walking")
 	else:
 		speed_x -= DECELERATION * delta
+		if (velocity.y == 0):
+			if ($Animation.animation == "Falling"):
+				_play_animation("Landing")
 		if (velocity.x == 0):
-			if ($Animation.animation == "Falling" or $Animation.animation == "Landing"):
-				$Animation.play("Landing")
-			else:
-				$Animation.play("Idle")
+			if ($Animation.animation != "Falling"):
+				_play_animation("Idle")
 		pass
 	pass
 
@@ -247,6 +249,9 @@ func _bomb_action():
 		active_bomb = false
 	else:
 		if has_bomb:
+			# Throw bomb
+			_play_animation("Throwing")
+			
 			has_bomb = false
 			active_bomb = true
 			var bomb_velocity = Vector2.ZERO
@@ -278,6 +283,12 @@ func knockback(new_velocity, stun_time):
 	stun_remaining = stun_time
 	pass
 
+func _play_animation(name):
+	if !($Animation.animation == "Throwing" and $Animation.is_playing()) or \
+	(name == "Dashing"):
+		$Animation.play(name)
+	pass
+
 func _play_sound(index):
 	if(index == RUN):
 		if(!get_node("runSound").is_playing()):
@@ -287,3 +298,6 @@ func _play_sound(index):
 	elif(index == JUMP):
 		get_node("jumpSound").play()
 	pass
+
+func _animation_finished():
+	$Animation.stop()

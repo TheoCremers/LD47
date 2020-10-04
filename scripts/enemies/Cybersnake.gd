@@ -33,7 +33,7 @@ func _process(_delta):
 	if not triggered and player != null and !dying:
 		facing_direction = sign(player.position.x - position.x)
 		sprite.flip_h = (facing_direction == 1)
-		attack_area.position.x = facing_direction * abs(attack_area.position.x)
+		attack_area.scale.x = -facing_direction
 
 func _start_attack():
 	triggered = true
