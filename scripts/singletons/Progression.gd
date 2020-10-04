@@ -9,9 +9,12 @@ var dash_unlocked : bool = false
 # 3 = 5 sec cooldown
 var transloc_level: int = 0
 
-var door_1_open : bool = false
-var door_2_open : bool = false
-var door_3_open : bool = false
-var door_4_open : bool = false
-var door_5_open : bool = false
-var door_6_open : bool = false
+var cleared_bonus_rooms : Array
+
+func clear_bonus_room(number: int):
+	if !cleared_bonus_rooms.has(number):
+		cleared_bonus_rooms.append(number)
+
+func is_bonus_room_cleared(number: int):
+	return cleared_bonus_rooms.has(number)
+

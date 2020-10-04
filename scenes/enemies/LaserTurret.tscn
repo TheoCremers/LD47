@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/enemies/laser turret.png" type="Texture" id=1]
-[ext_resource path="res://RayCast2D.gd" type="Script" id=2]
+[ext_resource path="res://scripts/RayCast2D.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/laser.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/laseroff.wav" type="AudioStream" id=4]
+
 
 [node name="LaserTurret" type="Node2D"]
 __meta__ = {
