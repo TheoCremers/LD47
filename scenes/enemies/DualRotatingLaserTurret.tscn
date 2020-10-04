@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/enemies/dualLaserTurret.png" type="Texture" id=1]
 [ext_resource path="res://RayCast2D.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/laser.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/sounds/laseroff.wav" type="AudioStream" id=4]
 [ext_resource path="res://scripts/enemies/RotatingLaserTurret.gd" type="Script" id=5]
 
 [node name="RotatingLaserTurret" type="Node2D"]
@@ -15,6 +13,7 @@ __meta__ = {
 
 [node name="RayCast2DFront" type="RayCast2D" parent="."]
 cast_to = Vector2( 1000, 0 )
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="RayCast2DFront"]
@@ -33,15 +32,9 @@ points = PoolVector2Array( 0, 0.5, 100, 0.5 )
 width = 2.0
 default_color = Color( 1, 0, 0, 1 )
 
-[node name="powerUpLaser" type="AudioStreamPlayer" parent="RayCast2DFront"]
-stream = ExtResource( 3 )
-
-[node name="powerOffLaser" type="AudioStreamPlayer" parent="RayCast2DFront"]
-stream = ExtResource( 4 )
-volume_db = -3.0
-
 [node name="RayCast2DBack" type="RayCast2D" parent="."]
 cast_to = Vector2( -1000, 0 )
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="RayCast2DBack"]
@@ -55,12 +48,5 @@ autostart = true
 points = PoolVector2Array( 0, 0.5, -100, 0.5 )
 width = 2.0
 default_color = Color( 1, 0, 0, 1 )
-
-[node name="powerUpLaser" type="AudioStreamPlayer" parent="RayCast2DBack"]
-stream = ExtResource( 3 )
-
-[node name="powerOffLaser" type="AudioStreamPlayer" parent="RayCast2DBack"]
-stream = ExtResource( 4 )
-volume_db = -3.0
 [connection signal="timeout" from="RayCast2DFront/Timer" to="RayCast2DFront" method="_on_Timer_timeout"]
 [connection signal="timeout" from="RayCast2DBack/Timer" to="RayCast2DBack" method="_on_Timer_timeout"]

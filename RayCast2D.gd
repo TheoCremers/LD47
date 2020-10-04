@@ -17,7 +17,8 @@ func _physics_process(_delta):
 	if is_colliding():
 		cast_point = to_local(get_collision_point())
 		var collide = get_collider()
-		print(collide)
+		if(collide.is_in_group("Player")):
+			collide._on_death()
 		
 		
 	$Line2D.points[1] = cast_point
@@ -26,10 +27,10 @@ func set_is_casting(cast : bool):
 	is_casting = cast
 	
 	if is_casting:
-		$powerUpLaser.play()
+		AudioManager.play_sfx("LaserPowerUp")
 		appear()
 	else:
-		$powerOffLaser.play()
+		AudioManager.play_sfx("LaserPowerDown")
 		disappear()
 	
 	set_physics_process(is_casting)

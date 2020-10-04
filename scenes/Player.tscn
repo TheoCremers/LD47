@@ -29,15 +29,15 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "Falling",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Walking",
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "Landing",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": false,
@@ -49,20 +49,20 @@ animations = [ {
 "name": "Jumping",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "Dashing",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ) ],
-"loop": false,
-"name": "Landing",
+"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Walking",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -72,7 +72,9 @@ extents = Vector2( 10, 24 )
 radius = 20.0
 height = 50.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 pause_mode = 1
 collision_layer = 2
 script = ExtResource( 1 )
@@ -115,3 +117,5 @@ limit_top = 0
 drag_margin_left = 0.13
 drag_margin_right = 0.13
 drag_margin_bottom = 0.17
+
+[node name="Tween" type="Tween" parent="."]
