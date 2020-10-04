@@ -37,11 +37,15 @@ var stunned = false
 var stun_remaining = 0
 
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
+onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
 	# Ensure the first frame is displayed correctly
 	velocity = -UP*10
 	velocity = move_and_slide(velocity, UP)
+	# disable dashattack hitbox
+	dash_hitbox.set_disabled(true)
+	$DashActive.connect("timeout", self, "_on_dash_finished")
 	pass
 
 func _input(event):
@@ -136,6 +140,9 @@ func _dash():
 	speed_x = DASH_FORCE_X
 	$DashCooldown.start()
 	$DashActive.start()
+	# Dash attack
+	$DashAttackArea.scale.x = facing_direction
+	dash_hitbox.set_disabled(false)
 	# TODO: Dash trail/animation
 	pass
 
@@ -151,6 +158,9 @@ func _dash_mechanics(delta):
 		# While gravity is still applied, it is ignored during an airdash 
 		velocity = move_and_slide(Vector2(velocity.x, 0), UP)
 	pass
+
+func _on_dash_finished():
+	dash_hitbox.set_disabled(true)
 
 func _apply_gravity(delta):
 	velocity.y += GRAVITY * delta * delta

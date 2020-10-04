@@ -33,4 +33,4 @@ position = Vector2( 920.862, 551.085 )
 NextRoomName = "Room2"
 
 [node name="Cybersnake" parent="." instance=ExtResource( 4 )]
-position = Vector2( 631.444, 366.725 )
+position = Vector2( 322.763, 428.461 )
