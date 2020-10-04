@@ -14,7 +14,7 @@ outline_size = 2
 outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
-[node name="Clock" type="Node"]
+[node name="Clock" type="CanvasLayer"]
 pause_mode = 1
 
 [node name="ClockBackground" type="Label" parent="."]

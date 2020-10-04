@@ -48,6 +48,10 @@ func _ready():
 	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
 	pass
 
+func init_camera(bounding_box: Vector2):
+	$Camera2D.limit_right = bounding_box.x
+	$Camera2D.limit_bottom = bounding_box.y
+
 func _input(event):
 	if stunned:
 		return

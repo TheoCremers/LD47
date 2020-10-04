@@ -45,12 +45,4 @@ func _input(event):
 
 
 func _reset():
-	# AudioManager.stop_all_sfx()
-	# AudioManager.stop_all_bgm()
-	Engine.set_time_scale(1)
-	Engine.set_iterations_per_second(60)
-	get_tree().paused = false
-	var error = get_tree().reload_current_scene()
-	if (error != OK):
-		print("Errorcode ", error)
-	pass
+	get_tree().call_group("game", "time_up")

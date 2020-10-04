@@ -12,7 +12,7 @@ var debug_gui
 var current_room_scene
 
 func _ready():
-	add_to_group("game")
+	add_to_group("Room_up1")
 	
 	# Init things
 	general_gui = general_gui_scene.instance()
@@ -60,6 +60,7 @@ func get_current_room():
 	return null
 	
 func room_transition(name: String, entrance: Vector2):
+	print("ok")
 	# Animation fadeout
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.25), "timeout")
