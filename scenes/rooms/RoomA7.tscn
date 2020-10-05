@@ -21,6 +21,7 @@ func _process(delta):
 [node name="Room" type="Node" groups=[
 "room",
 ]]
+pause_mode = 1
 script = ExtResource( 3 )
 max_time = 35
 dimensions = Vector2( 512, 1234 )

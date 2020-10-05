@@ -11,6 +11,7 @@
 [node name="Room" type="Node" groups=[
 "room",
 ]]
+pause_mode = 1
 script = ExtResource( 3 )
 dimensions = Vector2( 1536, 320 )
 

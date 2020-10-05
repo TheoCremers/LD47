@@ -10,10 +10,10 @@ const TIME_PENALTY_MIN: int = 1
 const TIME_PENALTY_MOD: float = 0.5
 
 var current_time_penalty
-
 var general_gui
 var debug_gui
 var current_room_scene
+var paused = false
 
 func _ready():
 	add_to_group("game")
@@ -49,6 +49,16 @@ func load_room(name: String):
 	
 	current_time_penalty = TIME_PENALTY_MAX
 	return true
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if (paused):
+			get_tree().paused = false
+			paused = false
+		else:
+			get_tree().paused = true
+			paused = true
+	
 
 func reset_room():
 	Progression.timescore = max(Progression.timescore - current_time_penalty, 0)

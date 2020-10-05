@@ -13,6 +13,7 @@
 [node name="Room" type="Node" groups=[
 "room",
 ]]
+pause_mode = 1
 script = ExtResource( 5 )
 max_time = 15
 dimensions = Vector2( 1536, 320 )
