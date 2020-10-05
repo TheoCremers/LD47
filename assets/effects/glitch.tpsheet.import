@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/glitch.tpsheet-682476f2e709a985de32fa6e69ce6023.res"
+
+[deps]
+
+files=[ "res://assets/effects/glitch.sprites/glitch3.tres", "res://assets/effects/glitch.sprites/glitch5.tres", "res://assets/effects/glitch.sprites/glitch4.tres", "res://assets/effects/glitch.sprites/glitch2.tres", "res://assets/effects/glitch.sprites/glitch1.tres" ]
+
+source_file="res://assets/effects/glitch.tpsheet"
+dest_files=[ "res://.import/glitch.tpsheet-682476f2e709a985de32fa6e69ce6023.res", "res://assets/effects/glitch.sprites/glitch3.tres", "res://assets/effects/glitch.sprites/glitch5.tres", "res://assets/effects/glitch.sprites/glitch4.tres", "res://assets/effects/glitch.sprites/glitch2.tres", "res://assets/effects/glitch.sprites/glitch1.tres" ]
+
+[params]
+
