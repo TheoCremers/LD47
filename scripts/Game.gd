@@ -80,7 +80,15 @@ func room_transition(name: String, entrance: Vector2):
 	$RoomTransition.position = top_left + 0.5*vsize/vtrans.get_scale()
 	
 	# Transition
-	load_room(name)
+	if (name == "END"):
+		AudioManager.fadeout_bgm()
+		AudioManager.stop_all_sfx()
+		Engine.set_time_scale(1)
+		Engine.set_iterations_per_second(60)
+		get_tree().paused = false
+		assert(get_tree().change_scene("res://scenes/story/Credits.tscn") == OK)
+	else:
+		load_room(name)
 		
 	# Animation fadein
 	vtrans = get_canvas_transform()
