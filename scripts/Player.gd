@@ -39,6 +39,7 @@ var has_moved = false
 
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
 onready var timeloss = preload("res://scenes/effects/TimeLoss.tscn")
+onready var telecheck_scene = preload("res://scenes/Telecheck.tscn")
 onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
@@ -261,7 +262,19 @@ func _bomb_action():
 	if Progression.transloc_level == 0:
 		return
 	if active_bomb:
-		position = bomb_instance.position
+		# Check which position we can teleport to. To prevent getting
+		# stuck in walls.
+		var telecheck = telecheck_scene.instance()
+		get_parent().add_child(telecheck)
+		telecheck.position = bomb_instance.position
+		if telecheck.check_up(24) && telecheck.check_down(24):
+			position = bomb_instance.position
+		elif telecheck.check_up(48):
+			position = bomb_instance.position+Vector2(0, -24)
+		elif telecheck.check_down(48):
+			position = bomb_instance.position+Vector2(0, 24)
+			
+		telecheck.queue_free()
 		bomb_instance.on_trigger()
 		active_bomb = false
 		$BombCooldown.start(get_bomb_cooldown())

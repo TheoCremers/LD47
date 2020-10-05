@@ -6,7 +6,7 @@ var bulletspeed = 400
 var direction = -1
 
 func _ready():
-	connect("body_entered", self, "_on_body_entered")
+	assert(connect("body_entered", self, "_on_body_entered") == OK)
 	$AnimatedSprite.flip_h = (direction == 1)
 	pass # Replace with function body.
 
