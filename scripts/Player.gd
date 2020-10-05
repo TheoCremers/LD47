@@ -3,14 +3,13 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const MAX_SPEED_X = 18000
 const MAX_JUMP_HEIGHT = 80
-const AIR_CONTROL = 0.6
+const AIR_CONTROL = 0.8
 const ACCELERATION = 54000
-const DECELERATION = 82000
-const DECELETATION_SLIDE = 10000
+const DECELERATION = 92000
 const JUMP_FORCE_X = 10000 
 const JUMP_FORCE_Y = 24000 
 const DASH_FORCE_X = 30000
-const GRAVITY = 100000 
+const GRAVITY = 90000 
 
 const BOMB_UP = Vector2(0, -350)
 const BOMB_DIAG = Vector2(200, -250)
