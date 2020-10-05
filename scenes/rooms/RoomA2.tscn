@@ -30,16 +30,6 @@ NextRoomName = "RoomB1"
 WarpRoomName = "RoomA3"
 BonusRoomId = 1
 
-[node name="Label" type="Label" parent="."]
-margin_left = 198.42
-margin_top = 198.106
-margin_right = 261.42
-margin_bottom = 212.106
-text = "ROOM A2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Glitch" parent="." instance=ExtResource( 4 )]
 position = Vector2( 451.932, 58.3117 )
 
@@ -56,17 +46,17 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Control"]
-position = Vector2( 253.419, 160.729 )
+position = Vector2( 253, 159 )
 z_index = -9
 texture = ExtResource( 5 )
 
 [node name="Sprite2" type="Sprite" parent="Control"]
-position = Vector2( 765.602, 160.618 )
+position = Vector2( 765, 159 )
 z_index = -9
 texture = ExtResource( 5 )
 
 [node name="Sprite3" type="Sprite" parent="Control"]
-position = Vector2( 1277.89, 160.173 )
+position = Vector2( 1277, 159 )
 z_index = -9
 texture = ExtResource( 5 )
 
