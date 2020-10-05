@@ -6,9 +6,9 @@ export(float) var bob_freq = 1
 export(float) var attack_cd = 0.2
 export(Vector2) var contact_knockback = Vector2(-250, -250)
 export(float) var contact_stun_time = 0.3
+export (float) var facing_direction = 1
 
 var time = 0
-var facing_direction = 1
 var motion = Vector2()
 var alert_level = 0
 var attack_cd_time = 0
@@ -28,6 +28,7 @@ func start(_player):
 func _ready():
 	sprite.animation = "flap"
 	sprite.play()
+	$FlipPoint.scale.x = facing_direction
 	
 	bob_freq = bob_freq * PI
 	assert($FlipPoint/Hitbox.connect("body_entered", self, "_on_player_contact") == OK)
@@ -50,7 +51,7 @@ func _physics_process(delta):
 		motion.x = motion.x * 0.8
 	motion = move_and_slide(motion)
 	# turnaround trigger
-	if sign(motion.x) == 0 and vx != 0:
+	if sign(motion.x) == 0 and vx != 0 and alert_level == 0:
 		facing_direction = -facing_direction
 		$FlipPoint.scale.x = facing_direction
 	
