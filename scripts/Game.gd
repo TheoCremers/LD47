@@ -9,6 +9,7 @@ const TIME_PENALTY_MAX: int = 5
 const TIME_PENALTY_MIN: int = 1
 const TIME_PENALTY_MOD: float = 0.5
 
+var mute = false
 var current_time_penalty
 var general_gui
 var debug_gui
@@ -51,6 +52,11 @@ func load_room(name: String):
 	return true
 
 func _input(event):
+	if event.is_action_pressed("mute_audio"):
+		mute = !mute
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), mute)
+	if event.is_action_pressed("exit_game"):
+		get_tree().quit()
 	if event.is_action_pressed("pause"):
 		if (paused):
 			get_tree().paused = false
