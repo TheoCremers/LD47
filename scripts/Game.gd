@@ -28,8 +28,8 @@ func _ready():
 	load_room(StartRoom)
 	
 	# Give player Translocator power
-	Progression.transloc_level = 3
-	Progression.dash_unlocked = true
+	#Progression.transloc_level = 3
+	#Progression.dash_unlocked = true
 	pass
 	
 func load_room(name: String):
