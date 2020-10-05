@@ -14,6 +14,7 @@ func check_up(length):
 		($RayCastUp.get_collision_point()))
 		if (tile_id != -1):
 			return collider.tile_set.tile_get_shape_one_way(tile_id, 0)
+		return false
 	return true
 	
 func check_down(length):
@@ -25,4 +26,5 @@ func check_down(length):
 		($RayCastDown.get_collision_point()))
 		if (tile_id != -1):
 			return collider.tile_set.tile_get_shape_one_way(tile_id, 0)
+		return false
 	return true

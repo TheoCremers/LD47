@@ -40,6 +40,7 @@ var has_moved = false
 onready var bomb = preload("res://scenes/Translocation_bomb.tscn")
 onready var timeloss = preload("res://scenes/effects/TimeLoss.tscn")
 onready var telecheck_scene = preload("res://scenes/Telecheck.tscn")
+onready var trailscene = preload("res://scenes/effects/Trail.tscn")
 onready var dash_hitbox = $DashAttackArea/CollisionShape2D
 
 func _ready():
@@ -126,6 +127,8 @@ func _movement_and_animation(delta):
 		_jump(delta)
 	if dash_trigger:
 		_dash_trigger(delta)
+	if $Trail/Enabled.time_left:
+		_fx_ghost(delta)
 	if $DashActive.time_left:
 		_dash_mechanics(delta)
 	else:
@@ -164,7 +167,8 @@ func _dash():
 	# Dash attack
 	$DashAttackArea.scale.x = facing_direction
 	dash_hitbox.set_disabled(false)
-	# TODO: Dash trail/animation
+	$Trail/Enabled.wait_time = 0.2
+	$Trail/Enabled.start()
 	_play_animation("Dashing")
 	pass
 
@@ -391,3 +395,15 @@ func _play_sound(index):
 
 func _animation_finished():
 	$Animation.stop()
+
+func _fx_ghost(_delta):
+	var trail = trailscene.instance()
+	trail.texture = $Animation.frames.get_frame($Animation.animation, $Animation.frame)
+	trail.set_as_toplevel(true)
+	trail.position = position
+	trail.scale = $Animation.scale
+	trail.flip_h = $Animation.flip_h
+	$Trail.add_child(trail)
+	trail.start()
+	
+	pass

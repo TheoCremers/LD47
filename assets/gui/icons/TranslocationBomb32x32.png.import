@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Layer 3.png-f39bcd7a866a96530e6f9ca6187ae292.stex"
+path="res://.import/TranslocationBomb32x32.png-727b24b3526f4ca72a15609f727dbdc1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BG/Layer 3.png"
-dest_files=[ "res://.import/Layer 3.png-f39bcd7a866a96530e6f9ca6187ae292.stex" ]
+source_file="res://assets/gui/icons/TranslocationBomb32x32.png"
+dest_files=[ "res://.import/TranslocationBomb32x32.png-727b24b3526f4ca72a15609f727dbdc1.stex" ]
 
 [params]
 
@@ -20,9 +20,9 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
-flags/anisotropic=true
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
