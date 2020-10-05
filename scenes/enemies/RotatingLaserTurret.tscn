@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/enemies/laser turret.png" type="Texture" id=1]
-[ext_resource path="res://RayCast2D.gd" type="Script" id=2]
+[ext_resource path="res://scripts/enemies/LaserBeam.gd" type="Script" id=2]
 [ext_resource path="res://scripts/enemies/RotatingLaserTurret.gd" type="Script" id=5]
+
 
 
 [node name="RotatingLaserTurret" type="Node2D"]
