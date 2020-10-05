@@ -343,7 +343,7 @@ func _on_bombcooldown_finished():
 func _stop_dash():
 	$DashActive.stop()
 	dash_trigger = false
-	dash_hitbox.set_disabled(true)
+	dash_hitbox.call_deferred("set_disabled", true)
 
 func knockback(new_velocity, stun_time, time_loss = 3):
 	velocity = new_velocity
