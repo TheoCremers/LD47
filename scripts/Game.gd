@@ -24,8 +24,8 @@ func _ready():
 	load_room(StartRoom)
 	
 	# Give player Translocator power
-	#Progression.transloc_level = 3
-	#Progression.dash_unlocked = true
+	Progression.transloc_level = 3
+	Progression.dash_unlocked = true
 	pass
 	
 func load_room(name: String):
@@ -74,15 +74,18 @@ func room_transition(name: String, entrance: Vector2):
 	Vector2.ZERO, Vector2(5,5), 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$Tween.start()
 	yield($Tween, "tween_completed")
-	
-	# Transition
-	load_room(name)
-	
-	# Animation fadein
-	yield(get_tree().create_timer(0.25), "timeout")
 	var vtrans = get_canvas_transform()
 	var top_left = -vtrans.get_origin() / vtrans.get_scale()
 	var vsize = get_viewport_rect().size
+	$RoomTransition.position = top_left + 0.5*vsize/vtrans.get_scale()
+	
+	# Transition
+	load_room(name)
+		
+	# Animation fadein
+	vtrans = get_canvas_transform()
+	top_left = -vtrans.get_origin() / vtrans.get_scale()
+	vsize = get_viewport_rect().size
 	$RoomTransition.position = top_left + 0.5*vsize/vtrans.get_scale()
 	$Tween.interpolate_property($RoomTransition, "scale", \
 	$RoomTransition.scale, Vector2.ZERO, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)	
@@ -121,8 +124,8 @@ func get_powerup(name: String):
 			Progression.dash_unlocked = true
 		"translocator":
 			var popup_scene = load("res://scenes/gui/PowerPopup" 
-			+ str(Progression.transloc_level + 2) + ".tscn")
+			+ str(min(4, Progression.transloc_level + 2)) + ".tscn")
 			var popup = popup_scene.instance()
 			$Overhead.add_child(popup)
-			Progression.transloc_level += 1
+			Progression.transloc_level = int(min(Progression.transloc_level + 1, 3))
 	pass

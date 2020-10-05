@@ -39,7 +39,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "You have gained the 
 knowledge of 
  - DASH STRIKE -
-Press Shift to perform"
+Press Shift to use."
 align = 1
 valign = 1
 __meta__ = {

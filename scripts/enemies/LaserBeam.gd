@@ -3,10 +3,11 @@ extends RayCast2D
 
 var is_casting = false setget set_is_casting
 onready var timer = $Timer
+export (float) var delay = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer.start()
+	timer.start(timer.wait_time + delay)
 	set_physics_process(false)
 	$Line2D.points[1] = Vector2.ZERO
 
