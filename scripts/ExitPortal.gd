@@ -16,7 +16,7 @@ export (int) var BonusRoomId = 0
 # in de export var van de bonus room.
 
 func _ready():
-	assert(connect("body_entered", self, "_on_player_entered") == OK)
+	connect("body_entered", self, "_on_player_entered")
 	if (TimescoreRequirement > 0):
 		$Panel.visible = true
 		$Panel/TimescoreIcon/Label.text = str(TimescoreRequirement)

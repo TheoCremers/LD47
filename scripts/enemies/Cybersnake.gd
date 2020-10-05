@@ -13,6 +13,8 @@ export(float) var attack_stun_time = 0.5
 export(Vector2) var contact_knockback = Vector2(-250, -250)
 export(float) var contact_stun_time = 0.3
 
+#onready var death_anim = preload("res://scenes/effects/EnemyDeathAnim.tscn")
+
 var player
 var triggered = false
 var facing_direction = 1
@@ -26,7 +28,7 @@ func start(_player):
 func _ready():
 	sprite.animation = "idle"
 	sprite.play()
-	assert($Hitbox.connect("body_entered", self, "_on_player_contact") == OK)
+	$Hitbox.connect("body_entered", self, "_on_player_contact")
 	pass
 
 func _process(_delta):
@@ -88,6 +90,11 @@ func on_hit():
 	
 	dying = true
 	# dying animation
+	var new_effect = load("res://scenes/effects/EnemyDeathAnim.tscn").instance()
+	new_effect.position = position
+	new_effect.scale *= 0.5
+	get_parent().add_child(new_effect)
+	
 	sprite.animation = "attacking"
 	tween.interpolate_property(sprite, "modulate", Color.white, \
 	Color(0, 1, 0, 0), death_anim_time, Tween.TRANS_SINE, Tween.EASE_IN)

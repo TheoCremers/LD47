@@ -50,9 +50,9 @@ func _ready():
 	velocity = move_and_slide(velocity, UP)
 	# disable dashattack hitbox
 	dash_hitbox.set_disabled(true)
-	assert($Animation.connect("animation_finished",self,"_animation_finished") == OK)
-	assert($BombCooldown.connect("timeout",self,"_on_bombcooldown_finished") == OK)
-	assert($DashActive.connect("timeout", self, "_on_dash_finished") == OK)
+	$Animation.connect("animation_finished",self,"_animation_finished")
+	$BombCooldown.connect("timeout",self,"_on_bombcooldown_finished")
+	$DashActive.connect("timeout", self, "_on_dash_finished")
 	pass
 
 func init_camera(bounding_box: Vector2):
