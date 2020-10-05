@@ -33,6 +33,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+attack_cd = 0.5
 
 [node name="FlipPoint" type="Node2D" parent="."]
 
