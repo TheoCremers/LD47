@@ -50,10 +50,9 @@ func _physics_process(delta):
 		motion.x = motion.x * 0.8
 	motion = move_and_slide(motion)
 	# turnaround trigger
-	if sign(motion.x) == 0:
+	if sign(motion.x) == 0 and vx != 0:
 		facing_direction = -facing_direction
 		$FlipPoint.scale.x = facing_direction
-		print(facing_direction)
 	
 	# check for player
 	sightline.force_raycast_update()
@@ -63,7 +62,7 @@ func _physics_process(delta):
 	else:
 		alert_level = clamp(alert_level - 0.1, 0, 15)
 	
-	if alert_level > 7:
+	if alert_level > 10:
 		if attack_cd_time > 0:
 			attack_cd_time -= delta
 		else:
