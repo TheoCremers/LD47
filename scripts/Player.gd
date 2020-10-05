@@ -366,7 +366,7 @@ func _on_death():
 		stunned = true
 		stun_remaining = 100
 		$Tween.stop_all()
-		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.6, Tween.TRANS_SINE)
+		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.2, Tween.TRANS_SINE)
 		$Tween.start()
 		yield($Tween, "tween_completed")
 		get_tree().call_group("game", "reset_room")
