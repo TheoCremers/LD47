@@ -40,7 +40,7 @@ text = "You have gained the
 knowledge of 
  - TELEBOMB -
 Press X to throw, 
-X to teleport"
+X to teleport."
 align = 1
 valign = 1
 __meta__ = {

@@ -29,11 +29,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "Jumping",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": false,
 "name": "Throwing",
@@ -68,6 +63,11 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -101,7 +101,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="DashActive" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="JumpBuffer" type="Timer" parent="."]

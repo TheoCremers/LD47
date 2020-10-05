@@ -11,53 +11,53 @@ region = Rect2( 0, 0, 180, 104 )
 atlas = ExtResource( 1 )
 region = Rect2( 0, 104, 180, 104 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 416, 180, 104 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 520, 180, 104 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 624, 180, 104 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 728, 180, 104 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 832, 180, 104 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 936, 180, 104 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": false,
 "name": "attacking",
 "speed": 20.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 60, 4 )
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id=12]
 radius = 25.0
 
-[sub_resource type="CircleShape2D" id=14]
-radius = 25.0
-
-[sub_resource type="CapsuleShape2D" id=21]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 200.0
 height = 200.0
 
@@ -70,7 +70,7 @@ script = ExtResource( 2 )
 [node name="FlipPoint" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="FlipPoint"]
-frames = SubResource( 11 )
+frames = SubResource( 9 )
 animation = "attacking"
 offset = Vector2( -52, -20 )
 
@@ -80,10 +80,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipPoint/AttackArea2D"]
 position = Vector2( -75, -14 )
-shape = SubResource( 13 )
+shape = SubResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -94,15 +94,16 @@ collision_layer = 0
 collision_mask = 2147483650
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 14 )
+shape = SubResource( 12 )
 
 [node name="ActivateArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea2D"]
 rotation = 1.5708
-shape = SubResource( 21 )
+shape = SubResource( 13 )
 [connection signal="body_entered" from="FlipPoint/AttackArea2D" to="." method="_on_attack_area_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_attack_warning_completed"]
 [connection signal="body_entered" from="ActivateArea2D" to="." method="_on_ActivateArea2D_body_entered"]

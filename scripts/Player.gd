@@ -251,17 +251,26 @@ func _ground_mechanics(delta):
 		speed_x += ACCELERATION * delta
 		
 		# Change animation speed based on movement speed
-		$Animation.frames.set_animation_speed("Walking", (7 + (9 * (speed_x / MAX_SPEED_X)))* 0.5)
-		_play_animation("Walking")
+#		$Animation.frames.set_animation_speed("Walking", (7 + (9 * (speed_x / MAX_SPEED_X)))* 0.5)
+#		_play_animation("Walking")
 	else:
 		speed_x -= DECELERATION * delta
-		if (velocity.y == 0):
-			if ($Animation.animation == "Falling"):
-				_play_animation("Landing")
-		if (velocity.x == 0):
-			if ($Animation.animation != "Falling"):
-				_play_animation("Idle")
+#		if (velocity.y == 0):
+#			if ($Animation.animation == "Falling"):
+#				_play_animation("Landing")
+#		if (velocity.x == 0):
+#			if ($Animation.animation != "Falling"):
+#				_play_animation("Idle")
 		pass
+	if (velocity.y == 0):
+		if ($Animation.animation == "Falling"):
+			_play_animation("Landing")
+		elif (abs(velocity.x) > 100):
+			# Change animation speed based on movement speed
+			$Animation.frames.set_animation_speed("Walking", (7 + (9 * (speed_x / MAX_SPEED_X)))* 0.5)
+			_play_animation("Walking")
+		else:
+			_play_animation("Idle")
 	pass
 
 func _bomb_action():
@@ -366,7 +375,7 @@ func _on_death():
 		stunned = true
 		stun_remaining = 100
 		$Tween.stop_all()
-		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.6, Tween.TRANS_SINE)
+		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.2, Tween.TRANS_SINE)
 		$Tween.start()
 		yield($Tween, "tween_completed")
 		get_tree().call_group("game", "reset_room")
