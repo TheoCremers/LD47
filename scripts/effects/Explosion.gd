@@ -4,7 +4,7 @@ export(float) var damage_amount = 10
 
 func _ready():
 	$AnimatedSprite.playing = true
-	assert(connect("body_entered", self, "_on_body_entered") == OK)
+	connect("body_entered", self, "_on_body_entered")
 
 func _on_AnimatedSprite_animation_finished():
 	call_deferred('free')

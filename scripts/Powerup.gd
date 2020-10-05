@@ -7,7 +7,7 @@ func _ready():
 		$Sprite.play("dash")
 	else: 
 		$Sprite.play("tele")
-	assert(connect("body_entered", self, "_on_player_entered") == OK)
+	connect("body_entered", self, "_on_player_entered")
 	pass # Replace with function body.
 
 func _on_player_entered(_body):
