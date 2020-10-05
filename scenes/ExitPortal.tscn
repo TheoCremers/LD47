@@ -7,28 +7,28 @@
 [ext_resource path="res://assets/fonts/intro.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/gui/icons/hourglass.png" type="Texture" id=6]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "open",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "green_locked",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "red_locked",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "green_locked",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 9.81516, 22.5784 )
+extents = Vector2( 11.4341, 8.14158 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0627451, 0.160784, 0.2, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -38,7 +38,7 @@ border_color = Color( 0, 0, 0, 1 )
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -46,7 +46,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 5 )
 
 [node name="ExitPortal" type="Area2D"]
@@ -55,10 +55,11 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "green_locked"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 22.1811 )
 shape = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
@@ -67,7 +68,7 @@ margin_left = -26.0561
 margin_top = -53.7079
 margin_right = 25.9439
 margin_bottom = -32.7079
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -75,14 +76,14 @@ __meta__ = {
 
 [node name="TimescoreIcon" type="AnimatedSprite" parent="Panel"]
 position = Vector2( 13.9627, 10.5859 )
-frames = SubResource( 5 )
+frames = SubResource( 4 )
 
 [node name="Label" type="Label" parent="Panel/TimescoreIcon"]
 margin_left = 8.2589
 margin_top = -4.01146
 margin_right = 48.2589
 margin_bottom = 9.98854
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "999"
 __meta__ = {
 "_edit_use_anchors_": false
