@@ -3,7 +3,7 @@ extends Node2D
 var debug_gui_scene = preload("res://scenes/gui/DebugGUI.tscn")
 var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
 
-export (String) var StartRoom = "RoomA1"
+export (String) var StartRoom = "RoomA5"
 
 const TIME_PENALTY: int = 10
 
