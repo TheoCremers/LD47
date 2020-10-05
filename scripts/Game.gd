@@ -113,12 +113,16 @@ func time_up():
 	pass
 
 func get_powerup(name: String):
-	var popup_scene = load("res://scenes/gui/PowerPopup.tscn")
-	var popup = popup_scene.instance()
-	$Overhead.add_child(popup)
 	match name:
 		"dash":
+			var popup_scene = load("res://scenes/gui/PowerPopup.tscn")
+			var popup = popup_scene.instance()
+			$Overhead.add_child(popup)
 			Progression.dash_unlocked = true
 		"translocator":
+			var popup_scene = load("res://scenes/gui/PowerPopup" 
+			+ str(Progression.transloc_level + 2) + ".tscn")
+			var popup = popup_scene.instance()
+			$Overhead.add_child(popup)
 			Progression.transloc_level += 1
 	pass
