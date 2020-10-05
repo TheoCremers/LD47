@@ -16,6 +16,7 @@ func _on_body_entered(_body):
 	new_gain.amount = time_amount
 	new_gain.rect_position = position
 	get_parent().add_child(new_gain)
+	AudioManager.play_sfx("GlitchPickup");
 	queue_free()
 	pass
 

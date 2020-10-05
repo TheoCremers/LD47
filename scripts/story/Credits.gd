@@ -35,7 +35,7 @@ func show_title():
 	$TitleScreen/PressStart.visible = true
 
 func _input(event):
-	if ($TitleScreen/PressStart.visible and !intro_finished 
+	if ($TitleScreen/PressStart.visible and !intro_finished \
 	and event.is_action_pressed("jump")):
 		intro_finished = true
 		$Tween.interpolate_property($BGM, "volume_db", -12, -80, 2, \
@@ -44,4 +44,4 @@ func _input(event):
 		Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
 		$Tween.start()
 		yield($Tween, "tween_completed")
-		
+		get_tree().quit()

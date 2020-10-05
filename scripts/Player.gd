@@ -50,8 +50,11 @@ func _ready():
 	velocity = move_and_slide(velocity, UP)
 	# disable dashattack hitbox
 	dash_hitbox.set_disabled(true)
+	get_tree().call_group("gui", "bomb_active", true)
+	get_tree().call_group("gui", "dash_active", true)
 	$Animation.connect("animation_finished",self,"_animation_finished")
 	$BombCooldown.connect("timeout",self,"_on_bombcooldown_finished")
+	$DashCooldown.connect("timeout",self,"_on_dashcooldown_finished")
 	$DashActive.connect("timeout", self, "_on_dash_finished")
 	pass
 
@@ -164,6 +167,7 @@ func _dash():
 	speed_x = DASH_FORCE_X
 	$DashCooldown.start()
 	$DashActive.start()
+	get_tree().call_group("gui", "dash_active", false)
 	# Dash attack
 	$DashAttackArea.scale.x = facing_direction
 	dash_hitbox.set_disabled(false)
@@ -298,6 +302,7 @@ func _bomb_action():
 		bomb_instance.on_trigger()
 		active_bomb = false
 		$BombCooldown.start(get_bomb_cooldown())
+		get_tree().call_group("gui", "bomb_active", false)
 	else:
 		if has_bomb:
 			# Throw bomb
@@ -339,7 +344,11 @@ func get_bomb_cooldown():
 			return 99
 
 func _on_bombcooldown_finished():
+	get_tree().call_group("gui", "bomb_active", true)
 	has_bomb = true
+
+func _on_dashcooldown_finished():
+	get_tree().call_group("gui", "dash_active", true)
 
 func _stop_dash():
 	$DashActive.stop()
