@@ -92,6 +92,7 @@ func on_hit():
 	dying = true
 	# dying animation
 	sprite.animation = "death"
+	AudioManager.play_sfx("MonsterDeath")
 	tween.interpolate_property(sprite, "modulate", Color.white, \
 	Color(0, 1, 0, 0), death_anim_time, Tween.TRANS_SINE, Tween.EASE_IN)
 	tween.start()

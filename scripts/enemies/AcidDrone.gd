@@ -106,6 +106,7 @@ func on_hit():
 	sprite.animation = "attacking"
 	tween.interpolate_property(sprite, "modulate", Color.white, \
 	Color(0, 1, 0, 0), death_anim_time, Tween.TRANS_SINE, Tween.EASE_IN)
+	AudioManager.play_sfx("MonsterDeath")
 	tween.start()
 	yield(tween, "tween_completed")
 	queue_free()
