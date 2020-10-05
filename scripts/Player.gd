@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-const MAX_SPEED_X = 28000
+const MAX_SPEED_X = 18000
 const MAX_JUMP_HEIGHT = 80
 const AIR_CONTROL = 0.6
 const ACCELERATION = 54000
@@ -339,6 +339,7 @@ func _on_bombcooldown_finished():
 func _stop_dash():
 	$DashActive.stop()
 	dash_trigger = false
+	dash_hitbox.set_disabled(true)
 
 func knockback(new_velocity, stun_time, time_loss = 3):
 	velocity = new_velocity
