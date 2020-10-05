@@ -383,7 +383,7 @@ func _on_death():
 		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.2, Tween.TRANS_SINE)
 		$Tween.start()
 		yield($Tween, "tween_completed")
-		get_tree().call_group("game", "reset_room")
+		get_tree().call_group("game", "time_up")
 
 func _play_sound(index):
 	if(index == RUN):
