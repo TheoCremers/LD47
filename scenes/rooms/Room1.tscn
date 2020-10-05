@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/ExitPortal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Room.gd" type="Script" id=3]
 [ext_resource path="res://scenes/enemies/Cybersnake.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/enemies/LaserTurretAlwaysOn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemies/DualRotatingLaserTurret.tscn" type="PackedScene" id=5]
 
 [node name="Room" type="Node" groups=[
 "room",
@@ -44,5 +44,5 @@ TimescoreRequirement = 20
 [node name="Cybersnake" parent="." instance=ExtResource( 4 )]
 position = Vector2( 688.35, 367.78 )
 
-[node name="LaserTurretAlwaysOn" parent="." instance=ExtResource( 5 )]
-position = Vector2( 296.65, 428.023 )
+[node name="DualRotatingLaserTurret" parent="." instance=ExtResource( 5 )]
+position = Vector2( 230.253, 402.821 )
