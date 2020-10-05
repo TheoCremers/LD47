@@ -61,5 +61,3 @@ shape = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="Sprite2" type="Sprite" parent="."]
