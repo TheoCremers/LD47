@@ -13,6 +13,7 @@
 "room",
 ]]
 script = ExtResource( 3 )
+max_time = 35
 dimensions = Vector2( 512, 1280 )
 
 [node name="BG" type="Node2D" parent="."]

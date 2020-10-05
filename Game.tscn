@@ -8,6 +8,7 @@
 ]]
 pause_mode = 2
 script = ExtResource( 1 )
+StartRoom = "RoomA6"
 
 [node name="Overhead" type="CanvasLayer" parent="."]
 

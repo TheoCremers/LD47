@@ -5,7 +5,11 @@ var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
 
 export (String) var StartRoom = "RoomA1"
 
-const TIME_PENALTY: int = 5
+const TIME_PENALTY_MAX: int = 5
+const TIME_PENALTY_MIN: int = 1
+const TIME_PENALTY_MOD: float = 0.5
+
+var current_time_penalty
 
 var general_gui
 var debug_gui
@@ -42,12 +46,16 @@ func load_room(name: String):
 	current_room_scene = load("res://scenes/rooms/" + name + ".tscn")
 	var new_room = current_room_scene.instance()
 	self.add_child(new_room)
+	
+	current_time_penalty = TIME_PENALTY_MAX
 	return true
 
 func reset_room():
-	Progression.timescore = max(Progression.timescore - TIME_PENALTY, 0)
+	Progression.timescore = max(Progression.timescore - current_time_penalty, 0)
 	general_gui.set_timescore(int(round(Progression.timescore)))
-	general_gui.setvalue(-TIME_PENALTY)
+	general_gui.setvalue(-int(ceil(current_time_penalty)))
+	current_time_penalty = clamp(current_time_penalty - TIME_PENALTY_MOD, \
+	TIME_PENALTY_MIN, TIME_PENALTY_MAX)
 	var current_room = get_current_room()
 	self.remove_child(current_room)
 	current_room.queue_free()
@@ -89,7 +97,7 @@ func room_transition(name: String, entrance: Vector2):
 		Engine.set_time_scale(1)
 		Engine.set_iterations_per_second(60)
 		get_tree().paused = false
-		assert(get_tree().change_scene("res://scenes/story/Credits.tscn") == OK)
+		get_tree().change_scene("res://scenes/story/Credits.tscn")
 	else:
 		load_room(name)
 		
