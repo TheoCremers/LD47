@@ -47,16 +47,6 @@ position = Vector2( 324.395, 1171.42 )
 position = Vector2( 429.255, 1185.46 )
 NextRoomName = "RoomA8"
 
-[node name="Label" type="Label" parent="."]
-margin_left = 208.955
-margin_top = 1049.32
-margin_right = 271.955
-margin_bottom = 1063.32
-text = "ROOM A7"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="DualRotatingLaserTurret" parent="." instance=ExtResource( 4 )]
 position = Vector2( 246.596, 1054.6 )
 
