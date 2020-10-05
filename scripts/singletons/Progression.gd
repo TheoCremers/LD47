@@ -1,7 +1,7 @@
 extends Node
 
 var timescore : float = 0
-var dash_unlocked : bool = true
+var dash_unlocked : bool = false
 
 # 0 = locked
 # 1 = 30 sec cooldown
