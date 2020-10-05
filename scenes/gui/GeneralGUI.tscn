@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/gui/GeneralGUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/gui/icons/hourglass.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/intro.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/gui/icons/Powerup-Translocation.png" type="Texture" id=4]
+[ext_resource path="res://assets/gui/icons/Powerup-Dash.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,7 +24,9 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" groups=[
+"gui",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 909.032
@@ -62,3 +66,15 @@ text = "+20"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BombCooldown" type="Sprite" parent="."]
+visible = false
+position = Vector2( -4.886, 171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="DashCooldown" type="Sprite" parent="."]
+visible = false
+position = Vector2( 21.153, 171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )

@@ -17,3 +17,19 @@ func setvalue(timescore_gains):
 	yield(get_tree().create_timer(4), "timeout")
 	$Label2.visible = false
 	return
+
+func _process(delta):
+	$BombCooldown.visible = Progression.transloc_level > 0
+	$DashCooldown.visible = Progression.dash_unlocked
+	
+func bomb_active(active):
+	if (!active):
+		$BombCooldown.modulate = Color(0,0,0)
+	else:
+		$BombCooldown.modulate = Color(1,1,1)
+
+func dash_active(active):
+	if (!active):
+		$DashCooldown.modulate = Color(0,0,0)
+	else:
+		$DashCooldown.modulate = Color(1,1,1)
