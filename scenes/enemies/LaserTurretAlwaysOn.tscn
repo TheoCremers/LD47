@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/enemies/laser turret.png" type="Texture" id=1]
 [ext_resource path="res://scenes/enemies/RayCast2DOn.gd" type="Script" id=2]
+[ext_resource path="res://scenes/effects/BeamParticle2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/effects/CollisionParticle2D.tscn" type="PackedScene" id=4]
 
 [node name="LaserTurretAlwaysOn" type="Node2D"]
 __meta__ = {
@@ -24,3 +26,7 @@ width = 3.0
 default_color = Color( 1, 0, 0, 1 )
 
 [node name="Tween" type="Tween" parent="RayCast2D"]
+
+[node name="CollisionParticle2D" parent="RayCast2D" instance=ExtResource( 4 )]
+
+[node name="BeamParticle2D" parent="RayCast2D" instance=ExtResource( 3 )]

@@ -41,12 +41,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
 "loop": false,
-"name": "Jumping",
+"name": "Landing",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": false,
-"name": "Throwing",
+"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Walking",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "Falling",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
@@ -59,9 +64,9 @@ animations = [ {
 "name": "Dashing",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Walking",
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
 "speed": 20.0
 } ]
 

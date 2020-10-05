@@ -217,6 +217,7 @@ func _movement_mechanics(delta):
 	else:
 		speed_x = clamp(speed_x, 0, MAX_SPEED_X)
 		velocity.x = speed_x * facing_direction * delta
+	
 	velocity = move_and_slide(velocity, UP)
 	
 	pass
@@ -389,8 +390,9 @@ func _on_death():
 		stunned = true
 		stun_remaining = 100
 		$Tween.stop_all()
-		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.2, Tween.TRANS_SINE)
+		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.black, 0.2, Tween.TRANS_SINE)
 		$Tween.start()
+		
 		yield($Tween, "tween_completed")
 		get_tree().call_group("game", "time_up")
 

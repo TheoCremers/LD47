@@ -20,6 +20,10 @@ dimensions = Vector2( 512, 1280 )
 [node name="BG" type="Node2D" parent="."]
 modulate = Color( 0.709804, 0.729412, 0.333333, 1 )
 z_index = -9
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="BG"]
 position = Vector2( 256, 160 )
@@ -48,7 +52,7 @@ __meta__ = {
 }
 
 [node name="Startpoint" type="Position2D" parent="."]
-position = Vector2( 112, 136 )
+position = Vector2( 112, 128 )
 
 [node name="ExitPortal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 256, 1232 )

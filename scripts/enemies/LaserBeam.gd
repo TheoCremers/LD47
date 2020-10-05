@@ -10,6 +10,9 @@ func _ready():
 	timer.start(timer.wait_time + delay)
 	set_physics_process(false)
 	$Line2D.points[1] = Vector2.ZERO
+#	var mat =$BeamParticle2D.process_material.duplicate()
+#	$BeamParticle2D.process_material = mat
+	
 
 func _physics_process(_delta):
 	var cast_point := cast_to
@@ -24,17 +27,16 @@ func _physics_process(_delta):
 		var collide = get_collider()
 		if(collide.is_in_group("Player")):
 			collide._on_death()
-		
-		
+	
 	$Line2D.points[1] = cast_point
 	
-	$BeamParticle2D.position = cast_point * 0.5
-	$BeamParticle2D.process_material.emission_box_extents.x = cast_point.length() * 0.5
-	
+#	$BeamParticle2D.position = cast_point * 0.5
+#	$BeamParticle2D.process_material.emission_box_extents.x = cast_point.length() * 0.5
+	#$BeamParticle2D.amount = 100 * cast_point.length() / 300
 
 func set_is_casting(cast):
 	is_casting = cast
-	$BeamParticle2D.emitting = cast
+#	$BeamParticle2D.emitting = cast
 	
 	if is_casting:
 		AudioManager.play_sfx("LaserPowerUp")

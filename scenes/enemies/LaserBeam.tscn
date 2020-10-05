@@ -1,54 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/enemies/LaserBeam.gd" type="Script" id=1]
-[ext_resource path="res://assets/particle/circle_fade.png" type="Texture" id=2]
-
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.648438, 0.648438, 0.648438, 1, 0.796078, 0.796078, 0.796078, 0 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.468354, 0.470455 ), 0.42246, 0.42246, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="ParticlesMaterial" id=5]
-emission_shape = 1
-emission_sphere_radius = 3.0
-flag_disable_z = true
-spread = 110.63
-gravity = Vector3( 0, 300, 0 )
-initial_velocity = 48.21
-initial_velocity_random = 0.48
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-radial_accel = 15.07
-radial_accel_random = 0.1
-scale = 0.07
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
-
-[sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0.00740741, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 0.25, 0.25, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
-
-[sub_resource type="ParticlesMaterial" id=8]
-emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1.05
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-tangential_accel = 128.64
-scale = 0.02
-color_ramp = SubResource( 7 )
+[ext_resource path="res://scenes/effects/BeamParticle2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/effects/CollisionParticle2D.tscn" type="PackedScene" id=3]
 
 [node name="LaserBeam" type="RayCast2D"]
 cast_to = Vector2( 1000, 0 )
@@ -69,20 +23,7 @@ default_color = Color( 1, 0, 0, 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="CollisionParticle2D" type="Particles2D" parent="."]
-position = Vector2( 10.5, 0 )
-emitting = false
-amount = 50
-lifetime = 0.6
-process_material = SubResource( 5 )
-texture = ExtResource( 2 )
+[node name="CollisionParticle2D" parent="." instance=ExtResource( 3 )]
 
-[node name="BeamParticle2D" type="Particles2D" parent="."]
-position = Vector2( 10.5, 0 )
-emitting = false
-amount = 100
-lifetime = 0.3
-local_coords = false
-process_material = SubResource( 8 )
-texture = ExtResource( 2 )
+[node name="BeamParticle2D" parent="." instance=ExtResource( 2 )]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
