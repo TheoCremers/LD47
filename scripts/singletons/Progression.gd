@@ -7,7 +7,7 @@ var dash_unlocked : bool = true
 # 1 = 30 sec cooldown
 # 2 = 15 sec cooldown
 # 3 = 5 sec cooldown
-var transloc_level: int = 0
+var transloc_level: int = 3
 
 var cleared_bonus_rooms : Array
 
