@@ -27,7 +27,8 @@ func _process(_delta):
 		speed_x_info.text = str("Speed X: ", player.speed_x)
 		fps_info.text = str("FPS: ", Performance.get_monitor(Performance.TIME_FPS))
 		misc_info.text = str("bombcd: ", player.get_node("BombCooldown").time_left)
-
+		misc2_info.text = str(Progression.cleared_bonus_rooms)
+	
 func _input(event):
 	if event.is_action_pressed("debug_toggle"):
 		if (visible):

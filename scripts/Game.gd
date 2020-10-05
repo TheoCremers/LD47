@@ -3,7 +3,7 @@ extends Node2D
 var debug_gui_scene = preload("res://scenes/gui/DebugGUI.tscn")
 var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
 
-export (String) var StartRoom = "Room1"
+export (String) var StartRoom = "RoomA1"
 
 const TIME_PENALTY: int = 10
 
@@ -12,7 +12,7 @@ var debug_gui
 var current_room_scene
 
 func _ready():
-	add_to_group("Room_up1")
+	add_to_group("game")
 	
 	# Init things
 	general_gui = general_gui_scene.instance()
@@ -24,8 +24,8 @@ func _ready():
 	load_room(StartRoom)
 	
 	# Give player Translocator power
-	Progression.transloc_level = 3
-	Progression.dash_unlocked = true
+	#Progression.transloc_level = 3
+	#Progression.dash_unlocked = true
 	pass
 	
 func load_room(name: String):
