@@ -18,9 +18,4 @@ texture = ExtResource( 1 )
 [node name="LaserBeamFront" parent="." instance=ExtResource( 3 )]
 
 [node name="LaserBeamBack" parent="." instance=ExtResource( 3 )]
-cast_to = Vector2( -1000, 0 )
-
-[node name="Line2D" parent="LaserBeamBack" index="1"]
-points = PoolVector2Array( -2.068, 0.5, -100, 0.5 )
-
-[editable path="LaserBeamBack"]
+rotation = 3.14159

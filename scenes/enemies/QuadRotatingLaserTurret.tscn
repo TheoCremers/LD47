@@ -14,29 +14,15 @@ __meta__ = {
 [node name="LaserBeamFront" parent="." instance=ExtResource( 3 )]
 
 [node name="LaserBeamBack" parent="." instance=ExtResource( 3 )]
-cast_to = Vector2( -1000, 0 )
-
-[node name="Line2D" parent="LaserBeamBack" index="1"]
-points = PoolVector2Array( -2.068, 0.5, -100, 0.5 )
+rotation = 1.5708
+cast_to = Vector2( 1000, 0 )
 
 [node name="LaserBeamUp" parent="." instance=ExtResource( 3 )]
-cast_to = Vector2( 0, -1000 )
-
-[node name="Line2D" parent="LaserBeamUp" index="1"]
-points = PoolVector2Array( 0, 0, 0, -100 )
+rotation = 3.14159
 
 [node name="LaserBeamDown" parent="." instance=ExtResource( 3 )]
-cast_to = Vector2( 0, 1000 )
-
-[node name="Line2D" parent="LaserBeamDown" index="1"]
-points = PoolVector2Array( 0, 0, 0, 100 )
+rotation = 4.71239
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -3.14159
 texture = ExtResource( 1 )
-
-[editable path="LaserBeamBack"]
-
-[editable path="LaserBeamUp"]
-
-[editable path="LaserBeamDown"]
