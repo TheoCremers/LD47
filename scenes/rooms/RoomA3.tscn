@@ -32,9 +32,19 @@ position = Vector2( 453.355, 890.528 )
 
 [node name="ExitPortal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 64, 128 )
-NextRoomName = "Room1"
+NextRoomName = "RoomA4"
 
 [node name="GatlingBird" parent="." instance=ExtResource( 4 )]
 position = Vector2( 378.348, 403.162 )
 vx = 0.0
 vy = 30.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 392.858
+margin_top = 787.524
+margin_right = 455.858
+margin_bottom = 801.524
+text = "ROOM A3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
