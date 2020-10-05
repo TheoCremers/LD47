@@ -41,6 +41,11 @@ func time_penalty(amount):
 	_check_time_remaining()
 	pass
 
+func time_bonus(amount):
+	_addTime((amount))
+	# TODO gain sound
+	pass
+
 func _check_time_remaining():
 	if timeRemaining <= 0:
 		_stopTime()
