@@ -12,8 +12,8 @@ const JUMP_FORCE_Y = 24000
 const DASH_FORCE_X = 30000
 const GRAVITY = 100000 
 
-const BOMB_UP = Vector2(0, -400)
-const BOMB_DIAG = Vector2(400, -400)
+const BOMB_UP = Vector2(0, -350)
+const BOMB_DIAG = Vector2(200, -250)
 const BOMB_HORI = Vector2(400, -100)
 
 const RUN = 1
@@ -306,6 +306,7 @@ func _bomb_action():
 				else:
 					bomb_velocity = BOMB_HORI
 					bomb_velocity.x *= input_direction
+			bomb_velocity.x += velocity.x * 0.3
 			
 			bomb_instance = bomb.instance()
 			bomb_instance.position = position
