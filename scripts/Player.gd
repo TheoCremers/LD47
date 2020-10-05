@@ -245,7 +245,7 @@ func _ground_mechanics(delta):
 		speed_x += ACCELERATION * delta
 		
 		# Change animation speed based on movement speed
-		$Animation.frames.set_animation_speed("Walking", 7 + (9 * (speed_x / MAX_SPEED_X)))
+		$Animation.frames.set_animation_speed("Walking", (7 + (9 * (speed_x / MAX_SPEED_X)))* 0.5)
 		_play_animation("Walking")
 	else:
 		speed_x -= DECELERATION * delta

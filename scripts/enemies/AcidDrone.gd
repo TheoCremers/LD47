@@ -1,23 +1,29 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-onready var sprite = $AnimatedSprite
-onready var swipe_sprite = $"AttackArea2D/AnimatedAttack"
+onready var sprite = $FlipPoint/AnimatedSprite
 onready var tween = $Tween
 onready var timer = $Timer
-onready var attack_area = $AttackArea2D
+onready var attack_area = $FlipPoint/AttackArea2D
 
 export(float) var attack_delay = 0.3
+export(float) var attack_delay2 = 0.1
 export(float) var attack_cd = 0.3
 export(Vector2) var attack_knockback = Vector2(-500, -500)
 export(float) var attack_stun_time = 0.5
 export(Vector2) var contact_knockback = Vector2(-250, -250)
 export(float) var contact_stun_time = 0.3
+export(float) var vx_max = 30
+export(float) var vy_max = 100
+export(float) var vx_acc = 3
+export(float) var vy_acc = 10
 
+var motion = Vector2()
 var player
 var triggered = false
 var facing_direction = 1
 var dying = false
 var death_anim_time = 0.5
+var active = false
 
 func start(_player):
 	player = _player
@@ -29,16 +35,29 @@ func _ready():
 	assert($Hitbox.connect("body_entered", self, "_on_player_contact") == OK)
 	pass
 
-func _process(_delta):
+func _physics_process(_delta):
 	if not triggered and player != null and !dying:
-		facing_direction = sign(player.position.x - position.x)
-		sprite.scale.x = -facing_direction
-		attack_area.scale.x = -facing_direction
+		var relative = player.position - position
+		facing_direction = sign(relative.x)
+		$FlipPoint.scale.x = -facing_direction
+		
+		if abs(relative.x) > 100:
+			motion.x = clamp(motion.x + sign(relative.x) * vx_acc, -vx_max, vx_max)
+		else:
+			motion.x = motion.x * 0.8
+		if abs(relative.y) > 10:
+			motion.y = clamp(motion.y + sign(relative.y) * vy_acc, -vy_max, vy_max)
+		else:
+			motion.y = motion.y * 0.8
+	else:
+		motion = motion * 0.8
+	
+	if active:
+		motion = move_and_slide(motion)	
 
 func _start_attack():
 	triggered = true
 	# telegraph attack
-	sprite.animation = "attacking"
 	tween.interpolate_property(sprite, "modulate", Color.white, \
 	Color(1, 0, 0), attack_delay, Tween.TRANS_SINE, Tween.EASE_IN)
 	tween.start()
@@ -52,10 +71,10 @@ func _on_attack_warning_completed(_object, _key):
 		return
 	
 	# attack animation
-	swipe_sprite.visible = true
-	swipe_sprite.frame = 0
-	swipe_sprite.play()
-	
+	sprite.animation = "attacking"
+	timer.wait_time = attack_delay2
+	timer.start()
+	yield(timer, "timeout")
 	if(attack_area.overlaps_body(player)):
 		var knockback_velocity = attack_knockback
 		knockback_velocity.x *= -facing_direction
@@ -70,10 +89,6 @@ func _on_attack_warning_completed(_object, _key):
 	# check if player is still in attack area
 	if(attack_area.overlaps_body(player)):
 		_start_attack()
-
-
-func _on_AnimatedAttack_finished():
-	swipe_sprite.visible = false
 
 func _on_player_contact(_body):
 	if _body == player and not dying:
@@ -94,3 +109,7 @@ func on_hit():
 	tween.start()
 	yield(tween, "tween_completed")
 	queue_free()
+
+
+func _on_ActivateArea2D_body_entered(_body):
+	active = true
