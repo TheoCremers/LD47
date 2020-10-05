@@ -34,9 +34,14 @@ animations = [ {
 "name": "Throwing",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "Stunned",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
@@ -61,7 +66,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
 "loop": false,
-"name": "Jumping",
+"name": "Landing",
 "speed": 20.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
