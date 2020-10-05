@@ -1,6 +1,6 @@
 extends Area2D
 
-export(float) var time_amount = 5
+export(float) var time_amount = 10
 onready var timegain = preload("res://scenes/effects/TimeGain.tscn")
 
 
