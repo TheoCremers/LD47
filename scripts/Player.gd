@@ -129,6 +129,9 @@ func _movement_and_animation(delta):
 	if $DashActive.time_left:
 		_dash_mechanics(delta)
 	else:
+		# When hitting an obstacle, causing the velocity to cease, re-adjust the speed
+		if (is_on_wall()):
+			speed_x = 0
 		if on_floor:
 			_ground_mechanics(delta)
 		else:
@@ -167,6 +170,11 @@ func _dash():
 
 
 func _dash_mechanics(delta):
+	# When hitting an obstacle, causing the velocity to cease, re-adjust the speed
+	if (is_on_wall()):
+		speed_x = 0
+		_stop_dash()
+	
 	_apply_gravity(delta)
 	speed_x = clamp(speed_x, 0, DASH_FORCE_X)
 	velocity.x = speed_x * facing_direction * delta
@@ -201,7 +209,8 @@ func _movement_mechanics(delta):
 	else:
 		speed_x = clamp(speed_x, 0, MAX_SPEED_X)
 		velocity.x = speed_x * facing_direction * delta
-	velocity = move_and_slide(velocity, UP)	
+	velocity = move_and_slide(velocity, UP)
+	
 	pass
 
 func _air_mechanics(delta):
@@ -234,10 +243,7 @@ func _air_mechanics(delta):
 	
 
 func _ground_mechanics(delta):
-	# When hitting an obstacle, causing the velocity to cease, re-adjust the speed
-	if (is_on_wall()):
-		speed_x = 0
-
+	
 	if input_direction:
 		if (facing_direction == -input_direction):
 			speed_x /= 3
@@ -320,12 +326,15 @@ func get_bomb_cooldown():
 func _on_bombcooldown_finished():
 	has_bomb = true
 
+func _stop_dash():
+	$DashActive.stop()
+	dash_trigger = false
+
 func knockback(new_velocity, stun_time, time_loss = 3):
 	velocity = new_velocity
 	facing_direction = -sign(new_velocity.x)
 	# stop dash
-	$DashActive.stop()
-	dash_trigger = false
+	_stop_dash()
 	# visual effect
 	$Tween.stop_all()
 	$Tween.interpolate_property($Animation, "modulate", Color.red, \
