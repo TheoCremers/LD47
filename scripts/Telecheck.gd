@@ -22,9 +22,9 @@ func check_down(length):
 	$RayCastDown.force_raycast_update()
 	var collider = $RayCastDown.get_collider()
 	if collider != null and collider.name == "TileMap":
-		var tile_id = collider.get_cellv(collider.world_to_map\
-		($RayCastDown.get_collision_point()))
-		if (tile_id != -1):
-			return collider.tile_set.tile_get_shape_one_way(tile_id, 0)
+#		var tile_id = collider.get_cellv(collider.world_to_map\
+#		($RayCastDown.get_collision_point()))
+#		if (tile_id != -1):
+#			return collider.tile_set.tile_get_shape_one_way(tile_id, 0)
 		return false
 	return true
