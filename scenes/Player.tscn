@@ -29,9 +29,24 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "Throwing",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "Dashing",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Stunned",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
@@ -49,25 +64,10 @@ animations = [ {
 "name": "Landing",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "Dashing",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": false,
-"name": "Throwing",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "Stunned",
+"name": "Idle",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "Jumping",
-"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
