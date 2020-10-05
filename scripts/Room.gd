@@ -6,6 +6,7 @@ export (int) var bonus_room_id = 0
 onready var clock_scene = preload("res://scenes/Clock.tscn")
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_STOP
 	var player = load("res://scenes/Player.tscn").instance()
 	if (max_time > 0):
 		var clock = clock_scene.instance()

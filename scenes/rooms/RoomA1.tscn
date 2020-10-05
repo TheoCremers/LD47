@@ -14,6 +14,7 @@
 [node name="Room" type="Node" groups=[
 "room",
 ]]
+pause_mode = 1
 script = ExtResource( 3 )
 max_time = 15
 dimensions = Vector2( 2048, 320 )
@@ -101,4 +102,3 @@ position = Vector2( 896, 80 )
 
 [node name="Glitch3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 240, 32 )
-time_amount = 10.0

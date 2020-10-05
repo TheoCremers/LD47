@@ -5,11 +5,12 @@ var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
 
 export (String) var StartRoom = "RoomA1"
 
-const TIME_PENALTY: int = 5
+const TIME_PENALTY: int = 3
 
 var general_gui
 var debug_gui
 var current_room_scene
+var paused = false
 
 func _ready():
 	add_to_group("game")
@@ -43,6 +44,16 @@ func load_room(name: String):
 	var new_room = current_room_scene.instance()
 	self.add_child(new_room)
 	return true
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if (paused):
+			get_tree().paused = false
+			paused = false
+		else:
+			get_tree().paused = true
+			paused = true
+	
 
 func reset_room():
 	Progression.timescore = max(Progression.timescore - TIME_PENALTY, 0)
