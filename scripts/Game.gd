@@ -3,7 +3,7 @@ extends Node2D
 var debug_gui_scene = preload("res://scenes/gui/DebugGUI.tscn")
 var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
 
-export (String) var StartRoom = "RoomA8"
+export (String) var StartRoom = "RoomA1"
 
 const TIME_PENALTY: int = 10
 
@@ -16,8 +16,8 @@ func _ready():
 	
 	# Init things
 	general_gui = general_gui_scene.instance()
-	debug_gui = debug_gui_scene.instance()
-	$Overhead.add_child(debug_gui)
+	#debug_gui = debug_gui_scene.instance()
+	#$Overhead.add_child(debug_gui)
 	$Overhead.add_child(general_gui)
 	AudioManager.play_bgm("FirstLoop")
 	
