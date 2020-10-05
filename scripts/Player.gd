@@ -343,7 +343,7 @@ func _on_bombcooldown_finished():
 func _stop_dash():
 	$DashActive.stop()
 	dash_trigger = false
-	dash_hitbox.set_disabled(true)
+	dash_hitbox.call_deferred("set_disabled", true)
 
 func knockback(new_velocity, stun_time, time_loss = 3):
 	velocity = new_velocity
@@ -383,7 +383,7 @@ func _on_death():
 		$Tween.interpolate_property($Animation, "modulate", Color.white, Color.transparent, 0.2, Tween.TRANS_SINE)
 		$Tween.start()
 		yield($Tween, "tween_completed")
-		get_tree().call_group("game", "reset_room")
+		get_tree().call_group("game", "time_up")
 
 func _play_sound(index):
 	if(index == RUN):

@@ -34,9 +34,19 @@ animations = [ {
 "name": "Throwing",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Jumping",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "Stunned",
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
@@ -44,36 +54,24 @@ animations = [ {
 "name": "Falling",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "Landing",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Walking",
 "speed": 20.0
 }, {
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Landing",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "Dashing",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "Jumping",
-"speed": 20.0
-
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": false,
-"name": "Throwing",
-"speed": 5.0
-
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ) ],
-"loop": false,
-"name": "Landing",
 "speed": 20.0
 } ]
 

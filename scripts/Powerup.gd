@@ -3,6 +3,10 @@ extends Area2D
 export(String, "dash", "translocator") var PowerupType = "dash"
 
 func _ready():
+	if PowerupType == "dash":
+		$Sprite.play("dash")
+	else: 
+		$Sprite.play("tele")
 	assert(connect("body_entered", self, "_on_player_entered") == OK)
 	pass # Replace with function body.
 

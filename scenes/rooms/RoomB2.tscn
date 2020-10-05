@@ -34,5 +34,5 @@ position = Vector2( 432, 256 )
 NextRoomName = "RoomA2"
 
 [node name="Powerup" parent="." instance=ExtResource( 4 )]
-position = Vector2( 280, 200 )
+position = Vector2( 280, 176 )
 PowerupType = "translocator"

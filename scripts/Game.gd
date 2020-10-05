@@ -3,9 +3,9 @@ extends Node2D
 var debug_gui_scene = preload("res://scenes/gui/DebugGUI.tscn")
 var general_gui_scene = preload("res://scenes/gui/GeneralGUI.tscn")
 
-export (String) var StartRoom = "RoomA6"
+export (String) var StartRoom = "RoomA1"
 
-const TIME_PENALTY: int = 10
+const TIME_PENALTY: int = 5
 
 var general_gui
 var debug_gui
@@ -16,16 +16,16 @@ func _ready():
 	
 	# Init things
 	general_gui = general_gui_scene.instance()
-	debug_gui = debug_gui_scene.instance()
-	$Overhead.add_child(debug_gui)
+	#debug_gui = debug_gui_scene.instance()
+	#$Overhead.add_child(debug_gui)
 	$Overhead.add_child(general_gui)
 	AudioManager.play_bgm("FirstLoop")
 	
 	load_room(StartRoom)
 	
 	# Give player Translocator power
-	Progression.transloc_level = 3
-	Progression.dash_unlocked = true
+	#Progression.transloc_level = 3
+	#Progression.dash_unlocked = true
 	pass
 	
 func load_room(name: String):
@@ -47,6 +47,7 @@ func load_room(name: String):
 func reset_room():
 	Progression.timescore = max(Progression.timescore - TIME_PENALTY, 0)
 	general_gui.set_timescore(int(round(Progression.timescore)))
+	general_gui.setvalue(-TIME_PENALTY)
 	var current_room = get_current_room()
 	self.remove_child(current_room)
 	current_room.queue_free()
@@ -54,8 +55,10 @@ func reset_room():
 	self.add_child(new_room)
 	
 func increment_timescore(current_room):
-	Progression.timescore += current_room.get_node("Clock/Clock").timeRemaining
+	var scoreadd = current_room.get_node("Clock/Clock").timeRemaining
+	Progression.timescore += scoreadd
 	general_gui.set_timescore(int(round(Progression.timescore)))
+	general_gui.setvalue(scoreadd)
 	pass
 
 func get_current_room():
@@ -64,9 +67,9 @@ func get_current_room():
 	return null
 	
 func room_transition(name: String, entrance: Vector2):
-	# Animation fadeout
+	# Animation fadeout	
 	get_tree().paused = true
-	yield(get_tree().create_timer(0.25), "timeout")
+	
 	$RoomTransition.position = entrance
 	$RoomTransition.visible = true
 	
@@ -80,7 +83,15 @@ func room_transition(name: String, entrance: Vector2):
 	$RoomTransition.position = top_left + 0.5*vsize/vtrans.get_scale()
 	
 	# Transition
-	load_room(name)
+	if (name == "END"):
+		AudioManager.fadeout_bgm()
+		AudioManager.stop_all_sfx()
+		Engine.set_time_scale(1)
+		Engine.set_iterations_per_second(60)
+		get_tree().paused = false
+		assert(get_tree().change_scene("res://scenes/story/Credits.tscn") == OK)
+	else:
+		load_room(name)
 		
 	# Animation fadein
 	vtrans = get_canvas_transform()

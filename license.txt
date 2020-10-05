@@ -1,4 +1,4 @@
-Intro text font: https://fontlibrary.org/en/font/cave-story
+Text font: https://fontlibrary.org/en/font/cave-story
 Designer: enigmansmp1824 
 Foundry: http://fontstruct.com 
 License: CC-BY-SA
@@ -15,5 +15,10 @@ License: CC-BY-4.0
 
 Second_loop.ogg: http://teknoaxe.com/Link_Code_3.php?q=1416
 Title: Race Between the Spires
+Artist: TehknoAXE
+License: CC-BY-4.0
+
+Credits.ogg: http://teknoaxe.com/Link_Code_3.php?q=1635&genre=Techno
+Title: Glorious Movie Ending
 Artist: TehknoAXE
 License: CC-BY-4.0
