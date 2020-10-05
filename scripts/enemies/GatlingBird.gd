@@ -31,15 +31,13 @@ func _ready():
 	$FlipPoint.scale.x = facing_direction
 	
 	bob_freq = bob_freq * PI
-	assert($FlipPoint/Hitbox.connect("body_entered", self, "_on_player_contact") == OK)
+	$FlipPoint/Hitbox.connect("body_entered", self, "_on_player_contact")
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if dying:
-		motion.y = vy
-		motion = move_and_slide(motion)
 		return
 	
 	# movement
@@ -91,6 +89,11 @@ func on_hit():
 	
 	dying = true
 	# dying animation
+	var new_effect = load("res://scenes/effects/EnemyDeathAnim.tscn").instance()
+	new_effect.position = position
+	new_effect.scale *= 0.7
+	get_parent().add_child(new_effect)
+	
 	sprite.animation = "death"
 	AudioManager.play_sfx("MonsterDeath")
 	tween.interpolate_property(sprite, "modulate", Color.white, \

@@ -5,7 +5,7 @@ var intro_finished = false
 
 func _ready():
 	if (skip):
-		assert(get_tree().change_scene("res://Game.tscn") == OK)
+		get_tree().change_scene("res://Game.tscn")
 		return
 	print_text($IntroText/Label.text)
 	$BGM.play(7)
@@ -39,4 +39,4 @@ func _input(_event):
 		Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.3)
 		$Tween.start()
 		yield($Tween, "tween_completed")
-		assert(get_tree().change_scene("res://Game.tscn") == OK)
+		get_tree().change_scene("res://Game.tscn")

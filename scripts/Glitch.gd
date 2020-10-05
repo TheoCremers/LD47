@@ -6,7 +6,7 @@ onready var timegain = preload("res://scenes/effects/TimeGain.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	assert(connect("body_entered", self, "_on_body_entered") == OK)
+	connect("body_entered", self, "_on_body_entered")
 	pass # Replace with function body.
 
 

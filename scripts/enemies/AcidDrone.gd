@@ -32,7 +32,7 @@ func start(_player):
 func _ready():
 	sprite.animation = "idle"
 	sprite.play()
-	assert($Hitbox.connect("body_entered", self, "_on_player_contact") == OK)
+	$Hitbox.connect("body_entered", self, "_on_player_contact")
 	pass
 
 func _physics_process(_delta):
@@ -103,6 +103,10 @@ func on_hit():
 	
 	dying = true
 	# dying animation
+	var new_effect = load("res://scenes/effects/EnemyDeathAnim.tscn").instance()
+	new_effect.position = position
+	get_parent().add_child(new_effect)
+	
 	sprite.animation = "attacking"
 	tween.interpolate_property(sprite, "modulate", Color.white, \
 	Color(0, 1, 0, 0), death_anim_time, Tween.TRANS_SINE, Tween.EASE_IN)
